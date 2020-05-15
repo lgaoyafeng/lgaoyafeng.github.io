@@ -923,7 +923,7 @@
 
 </article>
     
-    <article id="post-快速排序" class="article article-type-post" itemscope
+    <article id="post-杂项经验" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -931,8 +931,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"
-    >快速排序</a> 
+  <a class="article-title" href="/2020/05/15/%E6%9D%82%E9%A1%B9%E7%BB%8F%E9%AA%8C/"
+    >杂项经验</a> 
 </h2>
  
 
@@ -941,7 +941,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="article-date">
+      <a href="/2020/05/15/%E6%9D%82%E9%A1%B9%E7%BB%8F%E9%AA%8C/" class="article-date">
   <time datetime="2020-05-15T01:43:38.174Z" itemprop="datePublished">2020-05-15</time>
 </a>
       
@@ -959,11 +959,42 @@
       
 
       
-      <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Quick2Sort</span><span class="params">(values []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(values) &lt;= <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	mid, i := values[<span class="number">0</span>], <span class="number">1</span></span><br><span class="line">	head, tail := <span class="number">0</span>, <span class="built_in">len</span>(values)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> head &lt; tail &#123;</span><br><span class="line">		fmt.Println(values)</span><br><span class="line">		<span class="keyword">if</span> values[i] &gt; mid &#123;</span><br><span class="line">			values[i], values[tail] = values[tail], values[i]</span><br><span class="line">			tail--</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			values[i], values[head] = values[head], values[i]</span><br><span class="line">			head++</span><br><span class="line">			i++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	values[head] = mid</span><br><span class="line">	Quick2Sort(values[:head])</span><br><span class="line">	Quick2Sort(values[head+<span class="number">1</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      <ul>
+<li><p>在git中clone项目有两种方式：HTTPS和SSH，它们的区别如下：</p>
+</li>
+<li><p>HTTPS：不管是谁，拿到url随便clone，但是在push的时候需要验证用户名和密码；</p>
+</li>
+<li><p>SSH：clone的项目你必须是拥有者或者管理员，而且需要在clone前添加SSH Key。SSH 在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。</p>
+</li>
+<li><p>在git中使用SSH Key的步骤：</p>
+</li>
+<li><p>检查电脑是否存在SSH Key：$ cd ~/.ssh$ ls</p>
+</li>
+<li><p>如果存在id_rsa.pub 或 id_dsa.pub 文件，说明文件以及存在，跳过创建SSH Key步骤。</p>
+</li>
+<li><p>创建SSH Key</p>
+</li>
+<li><p>将公共的SSH 放到远程仓库上</p>
+<h1 id="时间入参出参的格式化注解"><a href="#时间入参出参的格式化注解" class="headerlink" title="时间入参出参的格式化注解"></a>时间入参出参的格式化注解</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#以下格式为国际标准格式,可根据具体需要更改</span><br><span class="line"><span class="meta">@JsonFormat</span>(pattern=<span class="string">"yyyy-MM-dd HH:mm:ss"</span>,timezone = <span class="string">"GMT+8"</span>)</span><br><span class="line"><span class="meta">@DateTimeFormat</span>(pattern=<span class="string">"yyyy-MM-dd HH:mm:ss"</span>)</span><br></pre></td></tr></table></figure>
 
-<p>​        第一步,取排序数组的第一个元素values[0],然后从第二个元素遍历数组,将values[0]与该元素比较,如果大于values[0],就将其放到数组末尾(依次往前),否则放到前边(依次往后),直到两个指针相遇,然后将中间值与第一个数进行调换,然后以改值为中心将其分割为两个数组,继续递归调用该方法.</p>
-<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ShellSort</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="comment">//外层步长控制</span></span><br><span class="line">    <span class="keyword">for</span> step := <span class="built_in">len</span>(nums) / <span class="number">2</span>; step &gt; <span class="number">0</span>; step /= <span class="number">2</span> &#123;</span><br><span class="line">        <span class="comment">//开始插入排序</span></span><br><span class="line">        <span class="keyword">for</span> i := step; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">            <span class="comment">//满足条件则插入</span></span><br><span class="line">            <span class="keyword">for</span> j := i - step; j &gt;= <span class="number">0</span> &amp;&amp; nums[j+step] &lt; nums[j]; j -= step &#123;</span><br><span class="line">                nums[j], nums[j+step] = nums[j+step], nums[j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="BigDecimal-的运算"><a href="#BigDecimal-的运算" class="headerlink" title="BigDecimal 的运算"></a>BigDecimal 的运算</h1><h3 id="使用静态的valueOf方法可以将普通的数值转换为大数值："><a href="#使用静态的valueOf方法可以将普通的数值转换为大数值：" class="headerlink" title="使用静态的valueOf方法可以将普通的数值转换为大数值："></a>使用静态的valueOf方法可以将普通的数值转换为大数值：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger b = BigInteger.valueOf(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
 
+<h3 id="遗憾的是，不能使用人们熟悉的算术运算符（如：-和-）处理大数值。而需要使用-大数值类中的add和multiply方法。"><a href="#遗憾的是，不能使用人们熟悉的算术运算符（如：-和-）处理大数值。而需要使用-大数值类中的add和multiply方法。" class="headerlink" title="遗憾的是，不能使用人们熟悉的算术运算符（如：+和*）处理大数值。而需要使用 大数值类中的add和multiply方法。"></a>遗憾的是，不能使用人们熟悉的算术运算符（如：+和*）处理大数值。而需要使用 大数值类中的add和multiply方法。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigInteger a = BigInteger.valueOf(<span class="number">10</span>);</span><br><span class="line">BigInteger b = BigInteger.valueOf(<span class="number">10</span>);</span><br><span class="line">BigInteger c = b.add(a); <span class="comment">//c=a+b</span></span><br><span class="line">BigInteger d = c.multiply(b.add(BigInteger.valueOf(<span class="number">2</span>)));<span class="comment">//d = c*(b+2)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BigInteger <span class="title">abs</span><span class="params">()</span> 返回大整数的绝对值</span></span><br><span class="line"><span class="function">BigInteger <span class="title">add</span><span class="params">(BigInteger val)</span> 返回两个大整数的和</span></span><br><span class="line"><span class="function">BigInteger <span class="title">and</span><span class="params">(BigInteger val)</span> 返回两个大整数的按位与的结果</span></span><br><span class="line"><span class="function">BigInteger <span class="title">andNot</span><span class="params">(BigInteger val)</span> 返回两个大整数与非的结果</span></span><br><span class="line"><span class="function">BigInteger <span class="title">divide</span><span class="params">(BigInteger val)</span> 返回两个大整数的商</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">doubleValue</span><span class="params">()</span> 返回大整数的<span class="keyword">double</span>类型的值</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">floatValue</span><span class="params">()</span> 返回大整数的<span class="keyword">float</span>类型的值</span></span><br><span class="line"><span class="function">BigInteger <span class="title">gcd</span><span class="params">(BigInteger val)</span> 返回大整数的最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">intValue</span><span class="params">()</span> 返回大整数的整型值</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">longValue</span><span class="params">()</span> 返回大整数的<span class="keyword">long</span>型值</span></span><br><span class="line"><span class="function">BigInteger <span class="title">max</span><span class="params">(BigInteger val)</span> 返回两个大整数的最大者</span></span><br><span class="line"><span class="function">BigInteger <span class="title">min</span><span class="params">(BigInteger val)</span> 返回两个大整数的最小者</span></span><br><span class="line"><span class="function">BigInteger <span class="title">mod</span><span class="params">(BigInteger val)</span> 用当前大整数对val求模</span></span><br><span class="line"><span class="function">BigInteger <span class="title">multiply</span><span class="params">(BigInteger val)</span> 返回两个大整数的积</span></span><br><span class="line"><span class="function">BigInteger <span class="title">negate</span><span class="params">()</span> 返回当前大整数的相反数</span></span><br><span class="line"><span class="function">BigInteger <span class="title">not</span><span class="params">()</span> 返回当前大整数的非</span></span><br><span class="line"><span class="function">BigInteger <span class="title">or</span><span class="params">(BigInteger val)</span> 返回两个大整数的按位或</span></span><br><span class="line"><span class="function">BigInteger <span class="title">pow</span><span class="params">(<span class="keyword">int</span> exponent)</span> 返回当前大整数的exponent次方</span></span><br><span class="line"><span class="function">BigInteger <span class="title">remainder</span><span class="params">(BigInteger val)</span> 返回当前大整数除以val的余数</span></span><br><span class="line"><span class="function">BigInteger <span class="title">leftShift</span><span class="params">(<span class="keyword">int</span> n)</span> 将当前大整数左移n位后返回</span></span><br><span class="line"><span class="function">BigInteger <span class="title">rightShift</span><span class="params">(<span class="keyword">int</span> n)</span> 将当前大整数右移n位后返回</span></span><br><span class="line"><span class="function">BigInteger <span class="title">subtract</span><span class="params">(BigInteger val)</span>返回两个大整数相减的结果</span></span><br><span class="line"><span class="function"><span class="keyword">byte</span>[] <span class="title">toByteArray</span><span class="params">(BigInteger val)</span>将大整数转换成二进制反码保存在<span class="keyword">byte</span>数组中</span></span><br><span class="line"><span class="function">String <span class="title">toString</span><span class="params">()</span> 将当前大整数转换成十进制的字符串形式</span></span><br><span class="line"><span class="function">BigInteger <span class="title">xor</span><span class="params">(BigInteger val)</span> 返回两个大整数的异或</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="提示：要想快速地打印一个二维数组的数据元素列表，可以调用："><a href="#提示：要想快速地打印一个二维数组的数据元素列表，可以调用：" class="headerlink" title="提示：要想快速地打印一个二维数组的数据元素列表，可以调用："></a>提示：要想快速地打印一个二维数组的数据元素列表，可以调用：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Arrays.deepToSrring(arr));</span><br></pre></td></tr></table></figure>
+
+<h2 id="前端传参问题"><a href="#前端传参问题" class="headerlink" title="前端传参问题:"></a>前端传参问题:</h2><ul>
+<li><p>当传参为集合或数组时使用的是<code>json</code>传参时(仅有一个参数)只需用以下格式[1,2,3]</p>
+</li>
+<li><p>当参数只有一个时,参数名可以省略</p>
+</li>
+<li><p>当使用paras传参时,应使用 test?ids=1,2,3的格式</p>
+</li>
+</ul>
 
       
       <!-- reward -->
