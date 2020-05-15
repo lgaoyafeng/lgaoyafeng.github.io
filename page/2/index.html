@@ -83,6 +83,107 @@
     
     
     
+    <article id="post-杂项经验" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/15/%E6%9D%82%E9%A1%B9%E7%BB%8F%E9%AA%8C/"
+    >杂项经验</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/15/%E6%9D%82%E9%A1%B9%E7%BB%8F%E9%AA%8C/" class="article-date">
+  <time datetime="2020-05-15T01:43:38.174Z" itemprop="datePublished">2020-05-15</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <ul>
+<li><p>在git中clone项目有两种方式：HTTPS和SSH，它们的区别如下：</p>
+</li>
+<li><p>HTTPS：不管是谁，拿到url随便clone，但是在push的时候需要验证用户名和密码；</p>
+</li>
+<li><p>SSH：clone的项目你必须是拥有者或者管理员，而且需要在clone前添加SSH Key。SSH 在push的时候，是不需要输入用户名的，如果配置SSH key的时候设置了密码，则需要输入密码的，否则直接是不需要输入密码的。</p>
+</li>
+<li><p>在git中使用SSH Key的步骤：</p>
+</li>
+<li><p>检查电脑是否存在SSH Key：$ cd ~/.ssh$ ls</p>
+</li>
+<li><p>如果存在id_rsa.pub 或 id_dsa.pub 文件，说明文件以及存在，跳过创建SSH Key步骤。</p>
+</li>
+<li><p>创建SSH Key</p>
+</li>
+<li><p>将公共的SSH 放到远程仓库上</p>
+<h1 id="时间入参出参的格式化注解"><a href="#时间入参出参的格式化注解" class="headerlink" title="时间入参出参的格式化注解"></a>时间入参出参的格式化注解</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#以下格式为国际标准格式,可根据具体需要更改</span><br><span class="line"><span class="meta">@JsonFormat</span>(pattern=<span class="string">"yyyy-MM-dd HH:mm:ss"</span>,timezone = <span class="string">"GMT+8"</span>)</span><br><span class="line"><span class="meta">@DateTimeFormat</span>(pattern=<span class="string">"yyyy-MM-dd HH:mm:ss"</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="BigDecimal-的运算"><a href="#BigDecimal-的运算" class="headerlink" title="BigDecimal 的运算"></a>BigDecimal 的运算</h1><h3 id="使用静态的valueOf方法可以将普通的数值转换为大数值："><a href="#使用静态的valueOf方法可以将普通的数值转换为大数值：" class="headerlink" title="使用静态的valueOf方法可以将普通的数值转换为大数值："></a>使用静态的valueOf方法可以将普通的数值转换为大数值：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BigInteger b = BigInteger.valueOf(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="遗憾的是，不能使用人们熟悉的算术运算符（如：-和-）处理大数值。而需要使用-大数值类中的add和multiply方法。"><a href="#遗憾的是，不能使用人们熟悉的算术运算符（如：-和-）处理大数值。而需要使用-大数值类中的add和multiply方法。" class="headerlink" title="遗憾的是，不能使用人们熟悉的算术运算符（如：+和*）处理大数值。而需要使用 大数值类中的add和multiply方法。"></a>遗憾的是，不能使用人们熟悉的算术运算符（如：+和*）处理大数值。而需要使用 大数值类中的add和multiply方法。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigInteger a = BigInteger.valueOf(<span class="number">10</span>);</span><br><span class="line">BigInteger b = BigInteger.valueOf(<span class="number">10</span>);</span><br><span class="line">BigInteger c = b.add(a); <span class="comment">//c=a+b</span></span><br><span class="line">BigInteger d = c.multiply(b.add(BigInteger.valueOf(<span class="number">2</span>)));<span class="comment">//d = c*(b+2)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BigInteger <span class="title">abs</span><span class="params">()</span> 返回大整数的绝对值</span></span><br><span class="line"><span class="function">BigInteger <span class="title">add</span><span class="params">(BigInteger val)</span> 返回两个大整数的和</span></span><br><span class="line"><span class="function">BigInteger <span class="title">and</span><span class="params">(BigInteger val)</span> 返回两个大整数的按位与的结果</span></span><br><span class="line"><span class="function">BigInteger <span class="title">andNot</span><span class="params">(BigInteger val)</span> 返回两个大整数与非的结果</span></span><br><span class="line"><span class="function">BigInteger <span class="title">divide</span><span class="params">(BigInteger val)</span> 返回两个大整数的商</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">doubleValue</span><span class="params">()</span> 返回大整数的<span class="keyword">double</span>类型的值</span></span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">floatValue</span><span class="params">()</span> 返回大整数的<span class="keyword">float</span>类型的值</span></span><br><span class="line"><span class="function">BigInteger <span class="title">gcd</span><span class="params">(BigInteger val)</span> 返回大整数的最大公约数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">intValue</span><span class="params">()</span> 返回大整数的整型值</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">longValue</span><span class="params">()</span> 返回大整数的<span class="keyword">long</span>型值</span></span><br><span class="line"><span class="function">BigInteger <span class="title">max</span><span class="params">(BigInteger val)</span> 返回两个大整数的最大者</span></span><br><span class="line"><span class="function">BigInteger <span class="title">min</span><span class="params">(BigInteger val)</span> 返回两个大整数的最小者</span></span><br><span class="line"><span class="function">BigInteger <span class="title">mod</span><span class="params">(BigInteger val)</span> 用当前大整数对val求模</span></span><br><span class="line"><span class="function">BigInteger <span class="title">multiply</span><span class="params">(BigInteger val)</span> 返回两个大整数的积</span></span><br><span class="line"><span class="function">BigInteger <span class="title">negate</span><span class="params">()</span> 返回当前大整数的相反数</span></span><br><span class="line"><span class="function">BigInteger <span class="title">not</span><span class="params">()</span> 返回当前大整数的非</span></span><br><span class="line"><span class="function">BigInteger <span class="title">or</span><span class="params">(BigInteger val)</span> 返回两个大整数的按位或</span></span><br><span class="line"><span class="function">BigInteger <span class="title">pow</span><span class="params">(<span class="keyword">int</span> exponent)</span> 返回当前大整数的exponent次方</span></span><br><span class="line"><span class="function">BigInteger <span class="title">remainder</span><span class="params">(BigInteger val)</span> 返回当前大整数除以val的余数</span></span><br><span class="line"><span class="function">BigInteger <span class="title">leftShift</span><span class="params">(<span class="keyword">int</span> n)</span> 将当前大整数左移n位后返回</span></span><br><span class="line"><span class="function">BigInteger <span class="title">rightShift</span><span class="params">(<span class="keyword">int</span> n)</span> 将当前大整数右移n位后返回</span></span><br><span class="line"><span class="function">BigInteger <span class="title">subtract</span><span class="params">(BigInteger val)</span>返回两个大整数相减的结果</span></span><br><span class="line"><span class="function"><span class="keyword">byte</span>[] <span class="title">toByteArray</span><span class="params">(BigInteger val)</span>将大整数转换成二进制反码保存在<span class="keyword">byte</span>数组中</span></span><br><span class="line"><span class="function">String <span class="title">toString</span><span class="params">()</span> 将当前大整数转换成十进制的字符串形式</span></span><br><span class="line"><span class="function">BigInteger <span class="title">xor</span><span class="params">(BigInteger val)</span> 返回两个大整数的异或</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="提示：要想快速地打印一个二维数组的数据元素列表，可以调用："><a href="#提示：要想快速地打印一个二维数组的数据元素列表，可以调用：" class="headerlink" title="提示：要想快速地打印一个二维数组的数据元素列表，可以调用："></a>提示：要想快速地打印一个二维数组的数据元素列表，可以调用：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Arrays.deepToSrring(arr));</span><br></pre></td></tr></table></figure>
+
+<h2 id="前端传参问题"><a href="#前端传参问题" class="headerlink" title="前端传参问题:"></a>前端传参问题:</h2><ul>
+<li><p>当传参为集合或数组时使用的是<code>json</code>传参时(仅有一个参数)只需用以下格式[1,2,3]</p>
+</li>
+<li><p>当参数只有一个时,参数名可以省略</p>
+</li>
+<li><p>当使用paras传参时,应使用 test?ids=1,2,3的格式</p>
+</li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-快速排序" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -1047,151 +1148,6 @@
 <p>3.同时持久化类,和对应的.hbm.xml文件</p>
 <p>4.Spring整合Hibernate</p>
 <p>5.加入Strust2</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-redis配置文件" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/15/redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"
-    >redis配置文件</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/15/redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="article-date">
-  <time datetime="2020-05-15T01:43:38.165Z" itemprop="datePublished">2020-05-15</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="redis-conf配置"><a href="#redis-conf配置" class="headerlink" title="redis.conf配置"></a>redis.conf配置</h2><p>redis.conf配置说明如下 ：</p>
-<ol>
-<li>Redis默认不是以守护线程的方式运行,可以通过该配置项修改,使用yes启用守护线程, daemonize</li>
-</ol>
-<p>yes</p>
-<ol start="2">
-<li><p>当Redis以守护线程运行时,Redis默认会把pid写入/run/redis.pid文件,可以通过profile指定 pidfile/var/run/redis.pid</p>
-</li>
-<li><p>指定Redis监听端口,默认端口为6379,作者在自己的一篇博文中解释了为什么选用6379作为端口,因为6379在手机上上的按键MERZ的对应的号码,而MERZ取自意大利歌女Alessia Merz的名字 </p>
-</li>
-</ol>
-<p>port 6379</p>
-<ol start="4">
-<li>绑定的主机地址 : bind 127.0.0.1</li>
-</ol>
-<p>​     假如需要远程访问的话需将其注释<code>#</code>,或者改为0.0.0.0</p>
-<ol start="5">
-<li><p>当客户端闲置多长时间后关闭连接,如果时间为0,表示关闭该功能, timeout 300</p>
-</li>
-<li><p>指定日志记录级别,Redis总共支持四个级别: debug, verbose, notice, warning, 摩尔恩为verbose</p>
-</li>
-<li><p>日志记录方式,默认为标准输出, 如果配置Redis为守护线程方式运行,而这里又配置为日志记录方式为标注输出,则日志会发送给/dev/null/logfile stdout</p>
-</li>
-<li><p>设置数据库的数量,默认数据库为0,可以使用SELECT<dbid>命令在连接指定数据库id</p>
-<p>database 16</p>
-</li>
-<li><p>指定在多长时间内,有多少次更新操作,就讲数据同步到数据文件,可以多个条件配合 save<seconds><changes></p>
-</li>
-</ol>
-<p>redis默认配置文件中提供了三个条件 :</p>
-<p>save 900 1 </p>
-<p>save 300 10</p>
-<p>save 60 10000</p>
-<p>分别表示900秒(15分钟)内有1个更改,300秒(5分钟)内有10个更改以及60秒有10000个更改</p>
-<ol start="10">
-<li><p>指定存储至本地数据库时是否压缩数据,默认为YES,Redis采用LZF压缩,如果为了节省CPU时间,可以关闭该选项, 但会导致数据库文件变的巨大, rdbcompression yes</p>
-</li>
-<li><p>指定本地数据库文件名, 默认值为 dump.db    dbfilename dump.db</p>
-</li>
-<li><p>指定本地数据库存放目录     dir./</p>
-</li>
-<li><p>设置当本机为slav服务时, 设置master服务的IP地址及端口,在Redis启动时, 它会主动从master进行数据同步,  slaveof<masterip><masterport></p>
-</li>
-<li><p>当master服务设置了密码保护时,salv服务连接master的密码    masterauth <master-password></p>
-</li>
-<li><p>设置Redis连接密码,如果配置了连接密码,客户端在连接Redis时需要通过 AUTH<password>命令提供密码,默认关闭  requirepass fobared</p>
-</li>
-<li><p>设置同一时间最大客户端连接数,默认无限制,Redis可以同时打开的客户端数为为Redis进程可以打开的最大文件描述符数,如果设置maxclients 0, 如果不做限制.当客户端连接数达到限制时,Redis会关闭新的连接并向客户端返回 max number of clients reched错误信息</p>
-</li>
-<li><p>指定Redis最大内存限制,Redis在启动时会把数据加载到内存中, 达到最大内存后, Redis会先尝试清楚已到期或即将到期的key, 当此方法处理后,仍达到最大内存设置,将无法再进行写入操作,但仍可以进行读取操作,Redis新的vm机制,会把key存到内存,value存到swap区 maxmemory<bytes></p>
-</li>
-<li><p>指定是否每次更新操作后进行日志同步记录, Redis在默认情况下是异步的把数据写入磁盘, 如果不开启, 可能会在断电时导致一段时间内的数据消失. 因为Redis本身同步数据文件是按上面save条件来同步的,所以有的数据会在一段时间内只存在内存中,默认为 no    appendonly no</p>
-</li>
-<li><p>指定更新日志文件名, 默认为appendonly.aof      apppendfiename appendonly.aof</p>
-</li>
-<li><p>指定跟新日志条件, 共有3个可选值 : </p>
-</li>
-<li><p>no : 表示等操作系统进行数据缓存同步到磁盘</p>
-<p>always : 表示你每次更新操作后手动地调用fsnc()将数据写到磁盘(慢,安全)</p>
-<p>everysec : 表示每秒同步一次 (折中,默认值)</p>
-</li>
-<li><p>虚拟内存文件路径, 默认值为 /tem/redis.swap, 不可多个Redis实例共享 vm-swap-file/temp/redis.swap</p>
-</li>
-<li><p>将所有大于vm-max-momory的数据存入虚拟内存,无论vm-max-memory设置多小, 所有索引数据都是内存存储的(Redis的索引数据就是keys),也就是说,当vm-max-memory设置为0的时候,其实所有value都存在于磁盘,默认值为0     vm-max-memory 0 </p>
-</li>
-<li><p>Redis swap文件分成了很多的page,一个对象可以保存多个page上面, 但一个page上不能被多个对象共享, vm-page-size是要根据储存的数据大小来设定的, 作者建议如果存储很多小对象,page的大小最好设置为32或者64bytes;如果存储很大对象,则可以使用更大的page,如果不确定, 就使用默认值  vm-page-size 32</p>
-</li>
-<li><p>设置swap文件中的page数量,由于页表(一种表示页面空闲或使用的bitmap)是放在内存中的, 在磁盘上每8个pages将消耗一个byte的内存, vm-pages 134217728</p>
-</li>
-<li><p>设置访问swap问价你的线程数,最好不要超过及其的核数, 如果设置为0, 那么所有的swap文件都是串行的, 可能会造成比较长的延迟,默认值为4 vm-max-threads 4 </p>
-</li>
-<li><p>上设置在向客户端应答时,是否把较小的包合并为一个包发送,默认为开启,  glueoutputbuf     yes</p>
-</li>
-<li><p>指定在超过一定的数量户或者最大的元素超过某一临界值时,采用一种特殊的哈希算法, hash-max-zipmap-entries   64        hash-max-zipmap-values  512</p>
-</li>
-<li><p>指定是否激活重置哈希,默认为开启   activerehashing yes</p>
-</li>
-<li><p>指定包含其他的配置文件, 可以在同一主机上多个Redis实例主键使用同一配置文件, 而同时各个实例又拥有自己的特定配置文件, include /path / to/local.conf</p>
-<h4 id="总结-在linux系统上-配置文件很重要-因为没有图形界面-所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的-等同于windows的设置-在更改的时候最好将配置文件-xxxx-conf单独copy一份来修改-这样可以避免修改错误不能回滚-修改完成后可以通过这份新的配置文件来启动应用-达到修改配置的目的"><a href="#总结-在linux系统上-配置文件很重要-因为没有图形界面-所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的-等同于windows的设置-在更改的时候最好将配置文件-xxxx-conf单独copy一份来修改-这样可以避免修改错误不能回滚-修改完成后可以通过这份新的配置文件来启动应用-达到修改配置的目的" class="headerlink" title="总结  : 在linux系统上,配置文件很重要,因为没有图形界面,所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的,等同于windows的设置,在更改的时候最好将配置文件 xxxx.conf单独copy一份来修改,这样可以避免修改错误不能回滚,修改完成后可以通过这份新的配置文件来启动应用,达到修改配置的目的"></a>总结  : 在linux系统上,配置文件很重要,因为没有图形界面,所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的,等同于windows的设置,在更改的时候最好将配置文件 xxxx.conf单独copy一份来修改,这样可以避免修改错误不能回滚,修改完成后可以通过这份新的配置文件来启动应用,达到修改配置的目的</h4></li>
-</ol>
 
       
       <!-- reward -->

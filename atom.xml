@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-14T09:18:21.799Z</updated>
+  <updated>2020-05-15T03:14:46.968Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>测试标签</title>
+    <link href="http://yoursite.com/2020/05/15/%E6%B5%8B%E8%AF%95%E6%A0%87%E7%AD%BE/"/>
+    <id>http://yoursite.com/2020/05/15/%E6%B5%8B%E8%AF%95%E6%A0%87%E7%AD%BE/</id>
+    <published>2020-05-15T03:05:30.043Z</published>
+    <updated>2020-05-15T03:14:46.968Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是一个测试的功能</p><h1 id="这是一个测试的功能"><a href="#这是一个测试的功能" class="headerlink" title="这是一个测试的功能"></a>这是一个测试的功能</h1><h2 id="这是一个测试的功能-1"><a href="#这是一个测试的功能-1" class="headerlink" title="这是一个测试的功能"></a>这是一个测试的功能</h2><h3 id="这是一个测试的功能-2"><a href="#这是一个测试的功能-2" class="headerlink" title="这是一个测试的功能"></a>这是一个测试的功能</h3><h4 id="这是一个测试的功能-3"><a href="#这是一个测试的功能-3" class="headerlink" title="这是一个测试的功能"></a>这是一个测试的功能</h4><h5 id="这是一个测试的功能-4"><a href="#这是一个测试的功能-4" class="headerlink" title="这是一个测试的功能"></a>这是一个测试的功能</h5><h6 id="这是一个测试的功能-5"><a href="#这是一个测试的功能-5" class="headerlink" title="这是一个测试的功能"></a>这是一个测试的功能</h6><h6 id="这是一个测试的功能-6"><a href="#这是一个测试的功能-6" class="headerlink" title="这是一个测试的功能"></a>这是一个测试的功能</h6>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这是一个测试的功能&lt;/p&gt;
+&lt;h1 id=&quot;这是一个测试的功能&quot;&gt;&lt;a href=&quot;#这是一个测试的功能&quot; class=&quot;headerlink&quot; title=&quot;这是一个测试的功能&quot;&gt;&lt;/a&gt;这是一个测试的功能&lt;/h1&gt;&lt;h2 id=&quot;这是一个测试的功能-1&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+    
+    
+      <category term="123" scheme="http://yoursite.com/tags/123/"/>
+    
+  </entry>
   
   <entry>
     <title>本地搭建Gitlab</title>
