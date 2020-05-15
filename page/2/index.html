@@ -160,6 +160,153 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-快速排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">快速排序</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2020-05-15T01:43:38.174Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Quick2Sort</span><span class="params">(values []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(values) &lt;= <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	mid, i := values[<span class="number">0</span>], <span class="number">1</span></span><br><span class="line">	head, tail := <span class="number">0</span>, <span class="built_in">len</span>(values)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> head &lt; tail &#123;</span><br><span class="line">		fmt.Println(values)</span><br><span class="line">		<span class="keyword">if</span> values[i] &gt; mid &#123;</span><br><span class="line">			values[i], values[tail] = values[tail], values[i]</span><br><span class="line">			tail--</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			values[i], values[head] = values[head], values[i]</span><br><span class="line">			head++</span><br><span class="line">			i++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	values[head] = mid</span><br><span class="line">	Quick2Sort(values[:head])</span><br><span class="line">	Quick2Sort(values[head+<span class="number">1</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        第一步,取排序数组的第一个元素values[0],然后从第二个元素遍历数组,将values[0]与该元素比较,如果大于values[0],就将其放到数组末尾(依次往前),否则放到前边(依次往后),直到两个指针相遇,然后将中间值与第一个数进行调换,然后以改值为中心将其分割为两个数组,继续递归调用该方法.</p>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ShellSort</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="comment">//外层步长控制</span></span><br><span class="line">    <span class="keyword">for</span> step := <span class="built_in">len</span>(nums) / <span class="number">2</span>; step &gt; <span class="number">0</span>; step /= <span class="number">2</span> &#123;</span><br><span class="line">        <span class="comment">//开始插入排序</span></span><br><span class="line">        <span class="keyword">for</span> i := step; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">            <span class="comment">//满足条件则插入</span></span><br><span class="line">            <span class="keyword">for</span> j := i - step; j &gt;= <span class="number">0</span> &amp;&amp; nums[j+step] &lt; nums[j]; j -= step &#123;</span><br><span class="line">                nums[j], nums[j+step] = nums[j+step], nums[j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-岛屿数量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/">岛屿数量</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" class="archive-article-date">
+  	<time datetime="2020-05-15T01:43:38.173Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="岛屿数量"><a href="#岛屿数量" class="headerlink" title="岛屿数量"></a>岛屿数量</h1><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>​        LeetCode(200)给你一个由 ‘1’（陆地）和 ‘0’（水）组成的的二维网格，请你计算网格中岛屿的数量。</p>
+<p>岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。</p>
+<p>此外，你可以假设该网格的四条边均被水包围。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>此题是一个可以使用深度优先搜索(DFS),也可以使用广度优先搜索(BFS)的题,</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h4><h5 id="DFS"><a href="#DFS" class="headerlink" title="DFS:"></a>DFS:</h5><p> 顺序的从前往后遍历,当发现有元素为’1’时,将与该元素的相连的值为’1’的元素赋值为0,然后再递归的调用自身方法对该元素四周的元素进行搜索,如果有’1’也将其复制为’0’直到找到所有与原始’1’联系的1,继续遍历,再碰到1让计数++.</p>
+<p>java代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (grid == <span class="keyword">null</span> || grid.length == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">int</span> na = grid.length;</span><br><span class="line">       <span class="keyword">int</span> nb = grid[<span class="number">0</span>].length;</span><br><span class="line">       <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; na; i++) &#123;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nb; j++) &#123;</span><br><span class="line">               <span class="keyword">if</span> (grid[i][j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                   sum++;</span><br><span class="line">                   dfs(grid, i, j);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> sum;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//递归将'1'旁边的'1'赋值为方法,</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[][] grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> na = grid.length;</span><br><span class="line">       <span class="keyword">int</span> nb = grid[<span class="number">0</span>].length;</span><br><span class="line">       <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span>||i&gt;=na||j&gt;=nb|| grid[i][j]==<span class="string">'0'</span>)&#123;</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       grid[i][j]=<span class="string">'0'</span>;</span><br><span class="line">       dfs(grid,i,j+<span class="number">1</span>);</span><br><span class="line">       dfs(grid,i,j-<span class="number">1</span>);</span><br><span class="line">       dfs(grid,i+<span class="number">1</span>,j);</span><br><span class="line">       dfs(grid,i-<span class="number">1</span>,j);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>go代码</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numIslands</span><span class="params">(grid [][]<span class="keyword">byte</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> grid == <span class="literal">nil</span> || <span class="built_in">len</span>(grid) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	na := <span class="built_in">len</span>(grid)</span><br><span class="line">	nb := <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">	sum := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; na; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; nb; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> grid[i][j] == <span class="string">'1'</span> &#123;</span><br><span class="line">				sum++</span><br><span class="line">				dfs(grid, i, j)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dfs</span><span class="params">(grid [][]<span class="keyword">byte</span>, i <span class="keyword">int</span>, j <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	na := <span class="built_in">len</span>(grid)</span><br><span class="line">	nb := <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">	<span class="keyword">if</span> i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt;= na || j &gt;= nb || grid[i][j] == <span class="string">'0'</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	grid[i][j] = <span class="string">'0'</span></span><br><span class="line">	dfs(grid, i+<span class="number">1</span>, j)</span><br><span class="line">	dfs(grid, i<span class="number">-1</span>, j)</span><br><span class="line">	dfs(grid, i, j+<span class="number">1</span>)</span><br><span class="line">	dfs(grid, i, j<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="BFS"><a href="#BFS" class="headerlink" title="BFS:"></a>BFS:</h5><p> 其实就是把使用的递归的方法搜索改为使用栈进行搜索,但是通过对比执行效率效率下降不少,推荐还是使用递归,代码简洁,效率高</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="keyword">char</span>[][] grid)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (grid == <span class="keyword">null</span> || grid.length == <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">int</span> na = grid.length;</span><br><span class="line">       <span class="keyword">int</span> nb = grid[<span class="number">0</span>].length;</span><br><span class="line">       <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; na; i++) &#123;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nb; j++) &#123;</span><br><span class="line">               <span class="keyword">if</span> (grid[i][j] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                   sum++;</span><br><span class="line">                   grid[i][j]=<span class="number">0</span>;</span><br><span class="line">                   Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">                   queue.add(nb * i + j);</span><br><span class="line">                   <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">                       Integer poll = queue.remove();</span><br><span class="line">                       <span class="keyword">int</span> row = poll / nb;</span><br><span class="line">                       <span class="keyword">int</span> col = poll % nb;</span><br><span class="line">                       <span class="keyword">if</span> (col + <span class="number">1</span> &lt; nb &amp;&amp; grid[row][col + <span class="number">1</span>] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                           grid[row][col + <span class="number">1</span>] = <span class="string">'0'</span>;</span><br><span class="line">                           queue.add(row * nb + col + <span class="number">1</span>);</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (col - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[row][col - <span class="number">1</span>] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                           grid[row][col - <span class="number">1</span>] = <span class="string">'0'</span>;</span><br><span class="line">                           queue.add(row * nb + col - <span class="number">1</span>);</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (row + <span class="number">1</span> &lt; na &amp;&amp; grid[row + <span class="number">1</span>][col] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                           grid[row + <span class="number">1</span>][col] = <span class="string">'0'</span>;</span><br><span class="line">                           queue.add(row * nb + col + nb);</span><br><span class="line">                       &#125;</span><br><span class="line">                       <span class="keyword">if</span> (row - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; grid[row - <span class="number">1</span>][col] == <span class="string">'1'</span>) &#123;</span><br><span class="line">                           grid[row - <span class="number">1</span>][col] = <span class="string">'0'</span>;</span><br><span class="line">                           queue.add(row * nb + col - nb);</span><br><span class="line">                       &#125;</span><br><span class="line"></span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> sum;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/15/%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-参数值格式问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1092,151 +1239,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/15/redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis持久化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/Redis%E6%8C%81%E4%B9%85%E5%8C%96/">Redis持久化</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/15/Redis%E6%8C%81%E4%B9%85%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-05-15T01:43:38.164Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h2><h3 id="RDB-Redis-database"><a href="#RDB-Redis-database" class="headerlink" title="RDB(Redis database)"></a>RDB(Redis database)</h3><p>定义 :  在指定的时间间隔内将内存中的数据集快照写入磁盘,也就是行话讲的Snapshot快照,它恢复时2是将快照文件直接读到内存里</p>
-<pre><code>Redis会单独创建(fork)一个子进程来进行持久化,会先将数据写入到一个临时文件中,待持久化过程都结束了,再用这个临时文件替换上次持久化好的文件,整个过程中,主进程是不进行任何IO操作的</code></pre><h3 id="AOF-Append-Only-File"><a href="#AOF-Append-Only-File" class="headerlink" title="AOF(Append Only File)"></a>AOF(Append Only File)</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/Redis%E6%8C%81%E4%B9%85%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Redis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/Redis/">Redis</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/15/Redis/" class="archive-article-date">
-  	<time datetime="2020-05-15T01:43:38.163Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><code>Redis</code></h2><h3 id="非关系型数据库的四种形式"><a href="#非关系型数据库的四种形式" class="headerlink" title="非关系型数据库的四种形式"></a>非关系型数据库的四种形式</h3><p>键值 : <code>Redis</code></p>
-<p>列存储数据库 : <code>HBase</code></p>
-<p>文档型数据库 : <code>MongoDB</code></p>
-<p>图形数据库 : <code>Neo4J</code>,<code>infoGrid</code></p>
-<h3 id="传统数据库的四大特性"><a href="#传统数据库的四大特性" class="headerlink" title="传统数据库的四大特性"></a>传统数据库的四大特性</h3><p>ACID</p>
-<p><code>Atomictiy</code> : 原子性</p>
-<p><code>Consistency</code> :  一致性</p>
-<p><code>Isolation</code> :  独立性</p>
-<p><code>Durability</code> :  持久性</p>
-<h3 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h3><p>CAP</p>
-<p><code>Consistency</code> : 强一致性</p>
-<p><code>Availability</code> : 可用性</p>
-<p><code>Partiton  tolerance</code>: 分区容错性</p>
-<p>只能满足两个</p>
-<h3 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h3><h4 id="3V-3高"><a href="#3V-3高" class="headerlink" title="3V+3高 :"></a>3V+3高 :</h4><h5 id="大数据时代的3v"><a href="#大数据时代的3v" class="headerlink" title="大数据时代的3v:"></a>大数据时代的3v:</h5><p>1.海量(Volume)</p>
-<p>2.多样(Variety)</p>
-<p>3.实时(Velocity)</p>
-<h5 id="互联网时代的3高"><a href="#互联网时代的3高" class="headerlink" title="互联网时代的3高:"></a>互联网时代的3高:</h5><p>1.高并发</p>
-<p>2.高可扩</p>
-<p>3.高性能</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/Redis/">展开全文 >></a>
         </p>
       
 
