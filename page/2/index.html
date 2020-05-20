@@ -83,6 +83,170 @@
     
     
     
+    <article id="post-求二数的最大公约数" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/15/%E6%B1%82%E4%BA%8C%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/"
+    >求二数的最大公约数</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/15/%E6%B1%82%E4%BA%8C%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/" class="article-date">
+  <time datetime="2020-05-15T01:43:38.175Z" itemprop="datePublished">2020-05-15</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="二数的最大公约数"><a href="#二数的最大公约数" class="headerlink" title="二数的最大公约数"></a>二数的最大公约数</h1><h3 id="1-辗转相除法"><a href="#1-辗转相除法" class="headerlink" title="1. 辗转相除法"></a>1. 辗转相除法</h3><p>​        又名欧几里得算法（Euclidean algorithm），该算法的目的 是求出两个正整数的最大公约数。它是已知最古老的算法， 其产生时间可追溯至公 元前300年前。</p>
+<p>​        这条算法基于一个定理：两个正整数a和b（a&gt;b），它们的最大公约数等于a除 以b的余数c和b之间的最大公约数。 例如10和25，25除以10商2余5，那么10和25的最大公约数，等同于10和5的最 大公约数。</p>
+<p>java代码实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getGreatestCommonDivisorV2</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> big = a &gt; b ? a : b;</span><br><span class="line">        <span class="keyword">int</span> small = a &gt; b ? b : a;</span><br><span class="line">        <span class="keyword">if</span> (big % small == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> small;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> getGreatestCommonDivisorV2(small, big % small);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>go代码实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-更相减损术"><a href="#2-更相减损术" class="headerlink" title="2. 更相减损术"></a>2. 更相减损术</h3><p>​        两个正整数a和b（a&gt;b），它们的最大公约数等于a-b的差 值c和较小数b的最大公约数。例如10和25，25减10的差是15，那么10和25的最大 公约数，等同于10和15的最大公约数。</p>
+<p>java代码实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getGreatestCommonDivisorV3</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">int</span> big = a &gt; b ? a : b;</span><br><span class="line">     <span class="keyword">int</span> small = a &gt; b ? b : a;</span><br><span class="line">     <span class="keyword">if</span> (big % small == <span class="number">0</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> small;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> getGreatestCommonDivisorV3(big-small, small);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-最优解-综合位运算"><a href="#3-最优解-综合位运算" class="headerlink" title="3.最优解(综合位运算)"></a>3.最优解(综合位运算)</h3><ul>
+<li><p>当a和b均为偶数时，gcd(a,b) = 2×gcd(a/2, b/2) = 2×gcd(a&gt;&gt;1,b&gt;&gt;1)。</p>
+</li>
+<li><p>当a为偶数，b为奇数时，gcd(a,b) = gcd(a/2,b) = gcd(a&gt;&gt;1,b)。</p>
+</li>
+<li><p>当a为奇数，b为偶数时，gcd(a,b) = gcd(a,b/2) = gcd(a,b&gt;&gt;1)。 </p>
+</li>
+<li><p>当a和b均为奇数时，先利用更相减损术运算一次，gcd(a,b) = gcd(b,a-b)，此 时a-b必然是偶数，然后又可以继续进行移位运算。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (a == b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//a b 同时为偶数数</span></span><br><span class="line">        <span class="keyword">if</span> ((a &amp; <span class="number">1</span>) == <span class="number">0</span> &amp;&amp; (b &amp; <span class="number">1</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//相当于2(a/2,b/2)</span></span><br><span class="line">            <span class="keyword">return</span> gcd(a&gt;&gt;<span class="number">1</span>,b&gt;&gt;<span class="number">1</span>)&lt;&lt;<span class="number">1</span>;</span><br><span class="line">            <span class="comment">//a为偶数,b为奇数</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>((a &amp; <span class="number">1</span>) == <span class="number">0</span> &amp;&amp; (b &amp; <span class="number">1</span>) != <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> gcd(a&gt;&gt;<span class="number">1</span>,b);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> ((a &amp; <span class="number">1</span>) != <span class="number">0</span> &amp;&amp; (b &amp; <span class="number">1</span>) == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> gcd(a,b&gt;&gt;<span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//同为奇数进行一次用更相减损术</span></span><br><span class="line">            <span class="keyword">int</span> big = a &gt; b ? a : b;</span><br><span class="line">            <span class="keyword">int</span> small = a &gt; b ? b : a;</span><br><span class="line">            <span class="keyword">return</span> gcd(big-small,small);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="判断一个数是不是2的整数次幂"><a href="#判断一个数是不是2的整数次幂" class="headerlink" title="判断一个数是不是2的整数次幂"></a>判断一个数是不是2的整数次幂</h1><p> (num&amp;num-1) == 0 为整数次幂  num&amp;num-1的作用是将该数的最后一位1改为0</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-快速排序" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"
+    >快速排序</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="article-date">
+  <time datetime="2020-05-15T01:43:38.174Z" itemprop="datePublished">2020-05-15</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Quick2Sort</span><span class="params">(values []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(values) &lt;= <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	mid, i := values[<span class="number">0</span>], <span class="number">1</span></span><br><span class="line">	head, tail := <span class="number">0</span>, <span class="built_in">len</span>(values)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> head &lt; tail &#123;</span><br><span class="line">		fmt.Println(values)</span><br><span class="line">		<span class="keyword">if</span> values[i] &gt; mid &#123;</span><br><span class="line">			values[i], values[tail] = values[tail], values[i]</span><br><span class="line">			tail--</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			values[i], values[head] = values[head], values[i]</span><br><span class="line">			head++</span><br><span class="line">			i++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	values[head] = mid</span><br><span class="line">	Quick2Sort(values[:head])</span><br><span class="line">	Quick2Sort(values[head+<span class="number">1</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        第一步,取排序数组的第一个元素values[0],然后从第二个元素遍历数组,将values[0]与该元素比较,如果大于values[0],就将其放到数组末尾(依次往前),否则放到前边(依次往后),直到两个指针相遇,然后将中间值与第一个数进行调换,然后以改值为中心将其分割为两个数组,继续递归调用该方法.</p>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ShellSort</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="comment">//外层步长控制</span></span><br><span class="line">    <span class="keyword">for</span> step := <span class="built_in">len</span>(nums) / <span class="number">2</span>; step &gt; <span class="number">0</span>; step /= <span class="number">2</span> &#123;</span><br><span class="line">        <span class="comment">//开始插入排序</span></span><br><span class="line">        <span class="keyword">for</span> i := step; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">            <span class="comment">//满足条件则插入</span></span><br><span class="line">            <span class="keyword">for</span> j := i - step; j &gt;= <span class="number">0</span> &amp;&amp; nums[j+step] &lt; nums[j]; j -= step &#123;</span><br><span class="line">                nums[j], nums[j+step] = nums[j+step], nums[j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-杂项经验" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -155,76 +319,6 @@
 <li><p>当使用paras传参时,应使用 test?ids=1,2,3的格式</p>
 </li>
 </ul>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-快速排序" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"
-    >快速排序</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="article-date">
-  <time datetime="2020-05-15T01:43:38.174Z" itemprop="datePublished">2020-05-15</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Quick2Sort</span><span class="params">(values []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(values) &lt;= <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	mid, i := values[<span class="number">0</span>], <span class="number">1</span></span><br><span class="line">	head, tail := <span class="number">0</span>, <span class="built_in">len</span>(values)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> head &lt; tail &#123;</span><br><span class="line">		fmt.Println(values)</span><br><span class="line">		<span class="keyword">if</span> values[i] &gt; mid &#123;</span><br><span class="line">			values[i], values[tail] = values[tail], values[i]</span><br><span class="line">			tail--</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			values[i], values[head] = values[head], values[i]</span><br><span class="line">			head++</span><br><span class="line">			i++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	values[head] = mid</span><br><span class="line">	Quick2Sort(values[:head])</span><br><span class="line">	Quick2Sort(values[head+<span class="number">1</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        第一步,取排序数组的第一个元素values[0],然后从第二个元素遍历数组,将values[0]与该元素比较,如果大于values[0],就将其放到数组末尾(依次往前),否则放到前边(依次往后),直到两个指针相遇,然后将中间值与第一个数进行调换,然后以改值为中心将其分割为两个数组,继续递归调用该方法.</p>
-<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ShellSort</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="comment">//外层步长控制</span></span><br><span class="line">    <span class="keyword">for</span> step := <span class="built_in">len</span>(nums) / <span class="number">2</span>; step &gt; <span class="number">0</span>; step /= <span class="number">2</span> &#123;</span><br><span class="line">        <span class="comment">//开始插入排序</span></span><br><span class="line">        <span class="keyword">for</span> i := step; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">            <span class="comment">//满足条件则插入</span></span><br><span class="line">            <span class="keyword">for</span> j := i - step; j &gt;= <span class="number">0</span> &amp;&amp; nums[j+step] &lt; nums[j]; j -= step &#123;</span><br><span class="line">                nums[j], nums[j+step] = nums[j+step], nums[j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
       <!-- reward -->
@@ -1078,76 +1172,6 @@
 </li>
 </ul>
 <p><class name="com.accp.pojo.TOrder" table="t_order">其中的name表示实体类的全类名,table表示的是表名,而且必须将需要查询的的所有字段与实体类对应起来(包括数据类型的匹配),否则查询不到</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-SSH框架" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/15/SSH%E6%A1%86%E6%9E%B6/"
-    >SSH框架</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/15/SSH%E6%A1%86%E6%9E%B6/" class="article-date">
-  <time datetime="2020-05-15T01:43:38.166Z" itemprop="datePublished">2020-05-15</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>1.加入Spring</p>
-<p>2.加入Hibernate</p>
-<p>3.同时持久化类,和对应的.hbm.xml文件</p>
-<p>4.Spring整合Hibernate</p>
-<p>5.加入Strust2</p>
 
       
       <!-- reward -->
