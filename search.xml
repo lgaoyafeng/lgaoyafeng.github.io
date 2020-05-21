@@ -1,93 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Docker</title>
-    <url>/2020/05/20/Docker/</url>
-    <content><![CDATA[<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h3 id="Docker常用命令"><a href="#Docker常用命令" class="headerlink" title="Docker常用命令"></a>Docker常用命令</h3><p><strong>镜像常用命令</strong></p>
-<a id="more"></a>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker images :#查看所有镜像</span><br><span class="line">docker rmi: #删除指定镜像</span><br><span class="line">docker search #镜像名 :查询镜像</span><br><span class="line">docker pull #镜像名:版本 :默认从官方镜像仓库拉取镜像,不指定版本的情况下默认拉取最新版本</span><br></pre></td></tr></table></figure>
-
-<p><strong>容器常用命令</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run #根据镜像启动容器</span><br><span class="line">   -- name #指定容器名</span><br><span class="line">   -d #后台方式启动</span><br><span class="line">   -it #使用交互方式运行,进入容器查看内容</span><br><span class="line">   -p #指定容器的端口  -p 3306:3306  前面对应宿主机id,后面对应容器内部id</span><br><span class="line">   -P #随机指定端口</span><br><span class="line">   -e #设置启动时候的参数</span><br><span class="line">docker ps #查看正在运行的容器</span><br><span class="line">   -a #查看所有容器</span><br><span class="line">   -n=? #列出最近创建的n个容器</span><br><span class="line">   -q  #只显示容器的编号</span><br><span class="line">exit 退出容器</span><br><span class="line">CTRL +p+q #不停止容器退出</span><br><span class="line">docker start 容器id #启动容器</span><br><span class="line">docker restart 容器id #重新启动容器</span><br><span class="line">docekr stop 容器id #停止当前正在运行的容器</span><br><span class="line">docker kill 容器id #强制退出容器</span><br><span class="line">docker inspect #容器id 查看容器元数据</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">1.12    1.13                用途</span><br><span class="line"></span><br><span class="line">attach  container attach    附加到一个运行的容器</span><br><span class="line">build   image build         从一个Dockerfile构建镜像</span><br><span class="line">commit  container commit    从一个容器的修改创建一个新的镜像</span><br><span class="line">cp      container cp        在容器与本地文件系统之间复制文件/文件夹</span><br><span class="line">create  container create    创建新的容器</span><br><span class="line">diff    container diff      检阅一个容器文件系统的修改</span><br><span class="line">events  system events       获取服务器的实时时间</span><br><span class="line">exec    container exec      在运行的容器内执行命令</span><br><span class="line">export  container export    打包一个容器文件系统到tar文件</span><br><span class="line">history image history       展示镜像历史信息</span><br><span class="line">images  image ls            展示镜像列表</span><br><span class="line">import  image import        用tar文件导入并创建镜像文件</span><br><span class="line">info    system info         展示整个系统信息</span><br><span class="line">inspect container inspect   展示一个容器/镜像或者任务的底层信息</span><br><span class="line">kill    container kill      终止一个或者多个运行中的容器</span><br><span class="line">load    image load          从tar文件或者标准输入载入镜像</span><br><span class="line">login   login               登录Docker registry</span><br><span class="line">logout  logout              从Docker registry登出</span><br><span class="line">logs    container logs      获取容器的日志</span><br><span class="line">network network             管理Docker网络</span><br><span class="line">node    node                管理Docker Swarm节点</span><br><span class="line">pause   container pause     暂停一个或者多个容器的所有进程</span><br><span class="line">port    container port      展示容器的端口映射</span><br><span class="line">ps      container ls        展示容器列表</span><br><span class="line">pull    image pull          从某个registry拉取镜像或者仓库</span><br><span class="line">push    image push          推送镜像或者仓库到某个registry</span><br><span class="line">rename  container rename    重命名容器</span><br><span class="line">restart container restart   重启容器</span><br><span class="line">rm      container rm        移除一个或多个容器</span><br><span class="line">rmi     image rm            移除一个或多个镜像</span><br><span class="line">run     container run       运行一个新的容器</span><br><span class="line">save    image save          打包一个或多个镜像到tar文件(默认是到标准输出)</span><br><span class="line">search  search              在Docker Hub搜索镜像</span><br><span class="line">service service             管理Docker services</span><br><span class="line">start   container start     启动一个或者多个容器</span><br><span class="line">stats   container stats     获取容器的实时资源使用统计</span><br><span class="line">stop    container stop      停止一个或多个运行容器</span><br><span class="line">swarm   swarm               管理Docker Swarm</span><br><span class="line">tag     image tag           标记一个镜像到仓库</span><br><span class="line">top     container top       展示容器运行进程</span><br><span class="line">unpause container unpause   解除暂停一个或多个容器的所有进程</span><br><span class="line">update  container update    更新一个或多个容器的配置</span><br><span class="line">version version             显示Docker版本信息</span><br><span class="line">volume  volume              管理Docker volumes</span><br><span class="line">wait    container wait      阻塞直到容器停止，然后打印退出代码</span><br></pre></td></tr></table></figure>
-
-<p><strong>docker安装ES</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">docker安装elasticsearch 并设置启动时候的内存 </span></span><br><span class="line">docker run -d --name myes -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e \</span><br><span class="line">"ES_JAVA_OPTS=-Xms256m -Xmx512m"  elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p><strong>docker的可视化后端</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">确实可以登录客户端并看到整个docker的状况</span></span><br><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>Commit镜像</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">先启动tomcat容器,默认的tomcat的webapps下面是没有任何文件的,这里先将同目录下边的文件copy进来</span></span><br><span class="line">cp -r webapps.dist/* webapps #这里用到了 -r命令,也就是递归copy</span><br><span class="line"><span class="meta">#</span><span class="bash">docker commitz 自己的镜像</span></span><br><span class="line">docker commit -a="yafeng"  -m="add webapps app"   aebfbdcafa0f tomcat10.0</span><br><span class="line"><span class="meta">#</span><span class="bash">通用的commit</span></span><br><span class="line">docker commit -a="作者名" -m="本次commit的描述"   已经启动的容器id  新的容器名及版本</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h3><p><strong>安装mysql</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">将mysql容器内部的数据挂载到宿主机 之后可以加载shell脚本中</span></span><br><span class="line">docker run -d -p 3306:3306 --privileged=true  -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql</span><br></pre></td></tr></table></figure>
-
-<h3 id="具名挂载和匿名挂载"><a href="#具名挂载和匿名挂载" class="headerlink" title="具名挂载和匿名挂载"></a>具名挂载和匿名挂载</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">具名挂载 就是指在挂载容器卷的时候指定了宿主机的地址,</span></span><br><span class="line">docker run -d -P --name mynginx2  -v juming-nginx:/etc/nginx nginx</span><br><span class="line"><span class="meta">#</span><span class="bash">生成卷的位置在/var/lib/docker/volumes,这里也是所有没有指定挂载卷绝对路径的卷的存放地址</span></span><br><span class="line"><span class="meta">#</span><span class="bash">在挂载时候设置读写权限</span></span><br><span class="line">docker run -d -P --name mynginx2  -v juming-nginx:/etc/nginx:ro nginx</span><br><span class="line">docker run -d -P --name mynginx2  -v juming-nginx:/etc/nginx:rw nginx</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="初始Dockerfile"><a href="#初始Dockerfile" class="headerlink" title="初始Dockerfile"></a>初始Dockerfile</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">创建dockerfile文件</span></span><br><span class="line">FROM centos</span><br><span class="line">VOLUME ["volume01","volume02"]</span><br><span class="line">CMD echo "-------end-------"</span><br><span class="line">CMD /bin/bash</span><br><span class="line"><span class="meta">#</span><span class="bash">下图是通过dockerinspect命令看到的挂载后的卷信息</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2020/05/19/6JM1AhlGNaPmVEw.png" alt="1589867427_1_.jpg"></p>
-<h3 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -it --name docker02 --volumes-from 被挂载的容器id或容器名 镜像id或者镜像名</span><br><span class="line"><span class="meta">#</span><span class="bash">挂载之后便实现了数据之间的共享,</span></span><br><span class="line"><span class="meta">#</span><span class="bash">删除docker01之后,docker02和docker03的数据还是存在的</span></span><br><span class="line"><span class="meta">#</span><span class="bash">亲自查看之后得到结论其实执行了上面的volumes-from命令后,是将docker01挂载的宿主机目录,也同docker02进行挂载,所以删除了docker02之后挂载关系是依然存在的</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>实现mysql的数据共享</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">将mysql容器内部的数据挂载到宿主机 之后可以加载shell脚本中</span></span><br><span class="line"><span class="meta">#</span><span class="bash">启动第一个mysql</span></span><br><span class="line">docker run -d -p 3306:3306 --privileged=true  -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql</span><br><span class="line"><span class="meta">#</span><span class="bash">启动第二个mysql并挂载第一个mysql</span></span><br><span class="line">docker run -d --privileged=true  --name mysql02 -p 3333:3306 -e MYSQL_ROOT_PASSWORD=123456 --volumes-from 55ed3b9c2ac2 mysql</span><br><span class="line"><span class="meta">#</span><span class="bash">事实证明mysql02已经把mysql01的数据库同步了过来,图片如下</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2020/05/19/oeuUP3Dil1WGMNI.png" alt="1589870261_1_.jpg"></p>
-<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>dockerfile是用来构建docker镜像的命令参数脚本</p>
-<p>构建步骤</p>
-<ol>
-<li>编写dockerfile文件</li>
-<li>docker build成为一个镜像</li>
-<li>docker run运行镜像</li>
-<li>docker pull 上传镜像(DockerHub, 阿里云镜像仓库 )</li>
-</ol>
-<p>官方的镜像大部分都是基础镜像,好多功能都没有,我们通常都会构建自己的镜像</p>
-<p>Dockerfile 命令</p>
-<p><img src="https://i.loli.net/2020/05/19/HyQPNMT6lZvrcGe.png" alt="docekrfile命令.jpg"></p>
-<p><strong>dockerfile构建过程</strong></p>
-<ol>
-<li>每一个保留关键字(指令)都必须是大写字母</li>
-<li>执行顺序从上到下</li>
-<li><code>#</code>表示注释</li>
-<li>每一指令都会提交一个新的镜像层,并提交</li>
-</ol>
-<p><img src="https://i.loli.net/2020/05/19/nNZsCPyRliq9SIh.jpg" alt="u_4047443406,3367621745_fm_11_gp_0.jpg"></p>
-<p>dockerfile逐渐成为企业交付的标准, 必须要掌握</p>
-<p>步骤: 开发-&gt;部署-&gt;运维</p>
-<p>Dockerfile :构建文件, 定义了一切的步骤,源码</p>
-<p>Dockerimages: 通过dockerfile构建的镜像, 最终发布和运行的产品</p>
-<p>Docker容器: 容器就是镜像运行起来的服务器</p>
-<p><img src="https://i.loli.net/2020/05/19/dGWJQIzbmLj2TY8.png" alt="u_268974649,2607019911_fm_26_gp_0.jpg"></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编写dockerfile</span></span><br><span class="line">FROM centos</span><br><span class="line">MAINTAINER yafeng&lt;lgaoyafeng@163.com&gt;</span><br><span class="line">ENV MYPATH /usr/local</span><br><span class="line">WORKDIR $MYPATH</span><br><span class="line">RUN yum -y install vim</span><br><span class="line">RUN yum -y install net-tools</span><br><span class="line">EXPOSE 81</span><br><span class="line">CMD echo $MYPATH</span><br><span class="line">CMD echo "----------end----------"</span><br><span class="line">CMD /bin/bash</span><br><span class="line"><span class="meta">#</span><span class="bash">执行构建</span></span><br><span class="line">Removing intermediate container 1d6c0444ffc7</span><br><span class="line">Successfully built 5355575ca8a2 构建成功</span><br><span class="line">[root@linux ceshi]# docker run -it 5355575ca8a2</span><br><span class="line">[root@80367edeafa4 local]# ll</span><br><span class="line">bash: ll: command not found</span><br><span class="line">[root@80367edeafa4 local]# vim acd.txt</span><br><span class="line">[root@80367edeafa4 local]# ifconfig</span><br><span class="line">eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.17.0.4  netmask 255.255.0.0  broadcast 0.0.0.0</span><br><span class="line">        inet6 fe80::42:acff:fe11:4  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 02:42:ac:11:00:04  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 8  bytes 656 (656.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 8  bytes 656 (656.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"><span class="meta">#</span><span class="bash">可以顺利执行vim命令和ifconfig</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>CMD和ENTRYPOINT的区别</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">CMD CMD命令可被替换</span></span><br><span class="line">vim dockerfilecmd</span><br><span class="line">FROM centos</span><br><span class="line">CMD ["ls","-a"]</span><br><span class="line">docker build -f dockerfilecmd -t centoscmd .</span><br><span class="line">[root@linux ceshi]# docker run 269454e99b3b</span><br><span class="line">.</span><br><span class="line">..</span><br><span class="line">.dockerenv</span><br><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">lib64</span><br><span class="line">lost+found</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br><span class="line">[root@linux ceshi]# docker run 269454e99b3b ls -a</span><br><span class="line">.</span><br><span class="line">..</span><br><span class="line">.dockerenv</span><br><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">lib64</span><br><span class="line">lost+found</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br><span class="line">[root@linux ceshi]# docker run 269454e99b3b ls -al</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:40 .</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:40 ..</span><br><span class="line">-rwxr-xr-x.   1 root root   0 May 19 07:40 .dockerenv</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 bin -&gt; usr/bin</span><br><span class="line">drwxr-xr-x.   5 root root 340 May 19 07:40 dev</span><br><span class="line">drwxr-xr-x.   1 root root  66 May 19 07:40 etc</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 home</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 lib -&gt; usr/lib</span><br><span class="line">lrwxrwxrwx.   1 root root   9 May 11  2019 lib64 -&gt; usr/lib64</span><br><span class="line">drwx------.   2 root root   6 Jan 13 21:48 lost+found</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 media</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 mnt</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 opt</span><br><span class="line">dr-xr-xr-x. 288 root root   0 May 19 07:40 proc</span><br><span class="line">dr-xr-x---.   2 root root 162 Jan 13 21:49 root</span><br><span class="line">drwxr-xr-x.   1 root root  21 May 19 07:40 run</span><br><span class="line">lrwxrwxrwx.   1 root root   8 May 11  2019 sbin -&gt; usr/sbin</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 srv</span><br><span class="line">dr-xr-xr-x.  13 root root   0 May 19 00:56 sys</span><br><span class="line">drwxrwxrwt.   7 root root 145 Jan 13 21:49 tmp</span><br><span class="line">drwxr-xr-x.  12 root root 144 Jan 13 21:49 usr</span><br><span class="line">drwxr-xr-x.  20 root root 262 Jan 13 21:49 var</span><br><span class="line"><span class="meta">#</span><span class="bash"> ENTRYPOINT</span></span><br><span class="line">vim dockerfileentry</span><br><span class="line">FROM centos</span><br><span class="line">ENTRYPOINT ["ls","-a"]</span><br><span class="line">[root@linux ceshi]# docker build -f docekrfileentry  -t centosentry .</span><br><span class="line">Sending build context to Docker daemon 6.656 kB</span><br><span class="line">Step 1/2 : FROM centos</span><br><span class="line"><span class="meta"> ---&gt;</span><span class="bash"> 470671670cac</span></span><br><span class="line">Step 2/2 : ENTRYPOINT ls -a</span><br><span class="line"><span class="meta"> ---&gt;</span><span class="bash"> Running <span class="keyword">in</span> f5519b84de16</span></span><br><span class="line"><span class="meta"> ---&gt;</span><span class="bash"> 07e5b62c3645</span></span><br><span class="line">Removing intermediate container f5519b84de16</span><br><span class="line">Successfully built 07e5b62c3645</span><br><span class="line">[root@linux ceshi]# docker run 07e5b62c3645</span><br><span class="line">.</span><br><span class="line">..</span><br><span class="line">.dockerenv</span><br><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">lib64</span><br><span class="line">lost+found</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br><span class="line">[root@linux ceshi]# docker run 07e5b62c3645 -l</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:45 .</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:45 ..</span><br><span class="line">-rwxr-xr-x.   1 root root   0 May 19 07:45 .dockerenv</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 bin -&gt; usr/bin</span><br><span class="line">drwxr-xr-x.   5 root root 340 May 19 07:45 dev</span><br><span class="line">drwxr-xr-x.   1 root root  66 May 19 07:45 etc</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 home</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 lib -&gt; usr/lib</span><br><span class="line">lrwxrwxrwx.   1 root root   9 May 11  2019 lib64 -&gt; usr/lib64</span><br><span class="line">drwx------.   2 root root   6 Jan 13 21:48 lost+found</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 media</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 mnt</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 opt</span><br><span class="line">dr-xr-xr-x. 287 root root   0 May 19 07:45 proc</span><br><span class="line">dr-xr-x---.   2 root root 162 Jan 13 21:49 root</span><br><span class="line">drwxr-xr-x.   1 root root  21 May 19 07:45 run</span><br><span class="line">lrwxrwxrwx.   1 root root   8 May 11  2019 sbin -&gt; usr/sbin</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 srv</span><br><span class="line">dr-xr-xr-x.  13 root root   0 May 19 00:56 sys</span><br><span class="line">drwxrwxrwt.   7 root root 145 Jan 13 21:49 tmp</span><br><span class="line">drwxr-xr-x.  12 root root 144 Jan 13 21:49 usr</span><br><span class="line">drwxr-xr-x.  20 root root 262 Jan 13 21:49 var</span><br><span class="line"><span class="meta">#</span><span class="bash">可以看出,最后直接在执行的命令后加上-l命令就可以了,命令可以追加</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="编写自己的tomcat"><a href="#编写自己的tomcat" class="headerlink" title="编写自己的tomcat"></a>编写自己的tomcat</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编写Dockerfile文件</span></span><br><span class="line">FROM centos</span><br><span class="line">MAINTAINER yafeng &lt;lgaoyafeng@163.com&gt;</span><br><span class="line">COPY readme.txt  /usr/local/readme.txt</span><br><span class="line">ADD jdk-8u211.tar.gz /usr/local/</span><br><span class="line">ADD apache-tomcat-9.0.35.tar.gz /usr/local</span><br><span class="line"></span><br><span class="line">RUN yum -y install vim</span><br><span class="line"></span><br><span class="line">ENV MYPATH /usr/local</span><br><span class="line">WORKDIR $MYPATH</span><br><span class="line">ENV JAVA_HOME /usr/local/jdk1.8.0_211</span><br><span class="line">ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.35</span><br><span class="line">ENV CATALINA_BASH /usr/local/apache-tomcat-9.0.35</span><br><span class="line">ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin</span><br><span class="line"></span><br><span class="line">EXPOSE 8080</span><br><span class="line"></span><br><span class="line">CMD /usr/local/apache-tomcat-9.0.35/bin/startup.sh &amp;&amp; tail -F /usr/local/apache-tomcat-9.0.35/bin/logs/catalina.out</span><br><span class="line"></span><br><span class="line">docker run -d --privileged=true  --name qianyan -p 9091:8080 -v /home/tomcat/test:/usr/local/apache-tomcat-9.0.35/webapps/test -v /home/tomcat/logs:/usr/local/apache-tomcat-9.0.35/logs mycat</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">在/home/tomcat/<span class="built_in">test</span>目录下新建WEB_INF文件夹,并在里面新建web.xml文件,在<span class="built_in">test</span>文件夹下放置index.html文件即可访问</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">修改yum镜像源</span></span><br><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>Docker数据卷挂载宿主机</title>
-    <url>/2020/05/15/Docker%E6%95%B0%E6%8D%AE%E5%8D%B7%E6%8C%82%E8%BD%BD%E5%AE%BF%E4%B8%BB%E6%9C%BA/</url>
-    <content><![CDATA[<h1 id="Docker-挂载宿主机文件-目录"><a href="#Docker-挂载宿主机文件-目录" class="headerlink" title="Docker 挂载宿主机文件/目录"></a>Docker 挂载宿主机文件/目录</h1><pre><code>这个问题困扰了很久,上次挂载`redis`的配置文件,就折腾了好久,这次配置`nginx`的配置文件/目录,又忙活了两个小时,其实挂载目录是没什么的问题的,关键是加上了配置文件之后,就会导致容器启动失败,&lt;!--more--&gt;后来百般搜索,从一个大神这找到了问题 ,链接`[https://blog.csdn.net/ii19910410/article/details/88639320?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522158519158119725219964887%2522%252C%2522scm%2522%253A%252220140713.130056874..%2522%257D&amp;request_id=158519158119725219964887&amp;biz_id=0&amp;utm_source=distribute.pc_search_result.none-task](https://blog.csdn.net/ii19910410/article/details/88639320?ops_request_misc=%7B%22request%5Fid%22%3A%22158519158119725219964887%22%2C%22scm%22%3A%2220140713.130056874..%22%7D&amp;request_id=158519158119725219964887&amp;biz_id=0&amp;utm_source=distribute.pc_search_result.none-task)`.</code></pre><p>​        问题的关键是 ,再挂载配置的文件的时候,要提前将配置文件的目录创建好,将配置文件copy过来,最好是官方的配置文件,然后在挂载配置文件的这个地方,注意挂载的是文件,而不是目录. 我的运行命令如下<code>docker run -p 80:80 --name dockerNginx --privileged=true -v /yafenguse/mynginx/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf -v /yafenguse/mynginx/nginx/conf/nginx.conf:/etc/nginx/nginx.conf  -v /yafenguse/mynginx/nginx/logs:/var/log/nginx  -v /yafenguse/mynginx/nginx/html:/usr/share/nginx/html -d nginx</code>,</p>
-<p>以下是配置文件的挂载(切记提前创建):</p>
-<p><code>/yafenguse/mynginx/nginx/conf/nginx.conf:/etc/nginx/nginx.conf</code></p>
-<p>最为关键的是以下命令:<code>--privileged=true</code>,原因是配置了配置文件以后,容器可能启动不成功,就使用该命令</p>
-<p>​        百度之后得知,该命令相当于是已<code>root</code>权限使用    <code>docker</code>启动容器,可能是挂载宿主机的配置文件时,普通的用户权限无效吧,以下是百度的解释:</p>
-<pre><code>大约在0.6版，privileged被引入docker。</code></pre><p>使用该参数，container内的root拥有真正的root权限。<br>否则，container内的root只是外部的一个普通用户权限。<br>privileged启动的容器，可以看到很多host上的设备，并且可以执行mount。<br>甚至允许你在docker容器中启动docker容器。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>12</title>
     <url>/2020/05/15/12/</url>
     <content><![CDATA[<h2 id="一文学会动态规划解题技巧"><a href="#一文学会动态规划解题技巧" class="headerlink" title="一文学会动态规划解题技巧"></a>一文学会动态规划解题技巧</h2><p>原创 码海 <a href="javascript:void(0);">码海</a> <em>2月16日</em></p>
@@ -371,6 +284,93 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Docker</title>
+    <url>/2020/05/20/Docker/</url>
+    <content><![CDATA[<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h3 id="Docker常用命令"><a href="#Docker常用命令" class="headerlink" title="Docker常用命令"></a>Docker常用命令</h3><p><strong>镜像常用命令</strong></p>
+<a id="more"></a>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker images :#查看所有镜像</span><br><span class="line">docker rmi: #删除指定镜像</span><br><span class="line">docker search #镜像名 :查询镜像</span><br><span class="line">docker pull #镜像名:版本 :默认从官方镜像仓库拉取镜像,不指定版本的情况下默认拉取最新版本</span><br></pre></td></tr></table></figure>
+
+<p><strong>容器常用命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run #根据镜像启动容器</span><br><span class="line">   -- name #指定容器名</span><br><span class="line">   -d #后台方式启动</span><br><span class="line">   -it #使用交互方式运行,进入容器查看内容</span><br><span class="line">   -p #指定容器的端口  -p 3306:3306  前面对应宿主机id,后面对应容器内部id</span><br><span class="line">   -P #随机指定端口</span><br><span class="line">   -e #设置启动时候的参数</span><br><span class="line">docker ps #查看正在运行的容器</span><br><span class="line">   -a #查看所有容器</span><br><span class="line">   -n=? #列出最近创建的n个容器</span><br><span class="line">   -q  #只显示容器的编号</span><br><span class="line">exit 退出容器</span><br><span class="line">CTRL +p+q #不停止容器退出</span><br><span class="line">docker start 容器id #启动容器</span><br><span class="line">docker restart 容器id #重新启动容器</span><br><span class="line">docekr stop 容器id #停止当前正在运行的容器</span><br><span class="line">docker kill 容器id #强制退出容器</span><br><span class="line">docker inspect #容器id 查看容器元数据</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">1.12    1.13                用途</span><br><span class="line"></span><br><span class="line">attach  container attach    附加到一个运行的容器</span><br><span class="line">build   image build         从一个Dockerfile构建镜像</span><br><span class="line">commit  container commit    从一个容器的修改创建一个新的镜像</span><br><span class="line">cp      container cp        在容器与本地文件系统之间复制文件/文件夹</span><br><span class="line">create  container create    创建新的容器</span><br><span class="line">diff    container diff      检阅一个容器文件系统的修改</span><br><span class="line">events  system events       获取服务器的实时时间</span><br><span class="line">exec    container exec      在运行的容器内执行命令</span><br><span class="line">export  container export    打包一个容器文件系统到tar文件</span><br><span class="line">history image history       展示镜像历史信息</span><br><span class="line">images  image ls            展示镜像列表</span><br><span class="line">import  image import        用tar文件导入并创建镜像文件</span><br><span class="line">info    system info         展示整个系统信息</span><br><span class="line">inspect container inspect   展示一个容器/镜像或者任务的底层信息</span><br><span class="line">kill    container kill      终止一个或者多个运行中的容器</span><br><span class="line">load    image load          从tar文件或者标准输入载入镜像</span><br><span class="line">login   login               登录Docker registry</span><br><span class="line">logout  logout              从Docker registry登出</span><br><span class="line">logs    container logs      获取容器的日志</span><br><span class="line">network network             管理Docker网络</span><br><span class="line">node    node                管理Docker Swarm节点</span><br><span class="line">pause   container pause     暂停一个或者多个容器的所有进程</span><br><span class="line">port    container port      展示容器的端口映射</span><br><span class="line">ps      container ls        展示容器列表</span><br><span class="line">pull    image pull          从某个registry拉取镜像或者仓库</span><br><span class="line">push    image push          推送镜像或者仓库到某个registry</span><br><span class="line">rename  container rename    重命名容器</span><br><span class="line">restart container restart   重启容器</span><br><span class="line">rm      container rm        移除一个或多个容器</span><br><span class="line">rmi     image rm            移除一个或多个镜像</span><br><span class="line">run     container run       运行一个新的容器</span><br><span class="line">save    image save          打包一个或多个镜像到tar文件(默认是到标准输出)</span><br><span class="line">search  search              在Docker Hub搜索镜像</span><br><span class="line">service service             管理Docker services</span><br><span class="line">start   container start     启动一个或者多个容器</span><br><span class="line">stats   container stats     获取容器的实时资源使用统计</span><br><span class="line">stop    container stop      停止一个或多个运行容器</span><br><span class="line">swarm   swarm               管理Docker Swarm</span><br><span class="line">tag     image tag           标记一个镜像到仓库</span><br><span class="line">top     container top       展示容器运行进程</span><br><span class="line">unpause container unpause   解除暂停一个或多个容器的所有进程</span><br><span class="line">update  container update    更新一个或多个容器的配置</span><br><span class="line">version version             显示Docker版本信息</span><br><span class="line">volume  volume              管理Docker volumes</span><br><span class="line">wait    container wait      阻塞直到容器停止，然后打印退出代码</span><br></pre></td></tr></table></figure>
+
+<p><strong>docker安装ES</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">docker安装elasticsearch 并设置启动时候的内存 </span></span><br><span class="line">docker run -d --name myes -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e \</span><br><span class="line">"ES_JAVA_OPTS=-Xms256m -Xmx512m"  elasticsearch</span><br></pre></td></tr></table></figure>
+
+<p><strong>docker的可视化后端</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">确实可以登录客户端并看到整个docker的状况</span></span><br><span class="line">docker run -d -p 8088:9000 --restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=true portainer/portainer</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Commit镜像</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">先启动tomcat容器,默认的tomcat的webapps下面是没有任何文件的,这里先将同目录下边的文件copy进来</span></span><br><span class="line">cp -r webapps.dist/* webapps #这里用到了 -r命令,也就是递归copy</span><br><span class="line"><span class="meta">#</span><span class="bash">docker commitz 自己的镜像</span></span><br><span class="line">docker commit -a="yafeng"  -m="add webapps app"   aebfbdcafa0f tomcat10.0</span><br><span class="line"><span class="meta">#</span><span class="bash">通用的commit</span></span><br><span class="line">docker commit -a="作者名" -m="本次commit的描述"   已经启动的容器id  新的容器名及版本</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h3><p><strong>安装mysql</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">将mysql容器内部的数据挂载到宿主机 之后可以加载shell脚本中</span></span><br><span class="line">docker run -d -p 3306:3306 --privileged=true  -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql</span><br></pre></td></tr></table></figure>
+
+<h3 id="具名挂载和匿名挂载"><a href="#具名挂载和匿名挂载" class="headerlink" title="具名挂载和匿名挂载"></a>具名挂载和匿名挂载</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">具名挂载 就是指在挂载容器卷的时候指定了宿主机的地址,</span></span><br><span class="line">docker run -d -P --name mynginx2  -v juming-nginx:/etc/nginx nginx</span><br><span class="line"><span class="meta">#</span><span class="bash">生成卷的位置在/var/lib/docker/volumes,这里也是所有没有指定挂载卷绝对路径的卷的存放地址</span></span><br><span class="line"><span class="meta">#</span><span class="bash">在挂载时候设置读写权限</span></span><br><span class="line">docker run -d -P --name mynginx2  -v juming-nginx:/etc/nginx:ro nginx</span><br><span class="line">docker run -d -P --name mynginx2  -v juming-nginx:/etc/nginx:rw nginx</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="初始Dockerfile"><a href="#初始Dockerfile" class="headerlink" title="初始Dockerfile"></a>初始Dockerfile</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">创建dockerfile文件</span></span><br><span class="line">FROM centos</span><br><span class="line">VOLUME ["volume01","volume02"]</span><br><span class="line">CMD echo "-------end-------"</span><br><span class="line">CMD /bin/bash</span><br><span class="line"><span class="meta">#</span><span class="bash">下图是通过dockerinspect命令看到的挂载后的卷信息</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/05/19/6JM1AhlGNaPmVEw.png" alt="1589867427_1_.jpg"></p>
+<h3 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker run -it --name docker02 --volumes-from 被挂载的容器id或容器名 镜像id或者镜像名</span><br><span class="line"><span class="meta">#</span><span class="bash">挂载之后便实现了数据之间的共享,</span></span><br><span class="line"><span class="meta">#</span><span class="bash">删除docker01之后,docker02和docker03的数据还是存在的</span></span><br><span class="line"><span class="meta">#</span><span class="bash">亲自查看之后得到结论其实执行了上面的volumes-from命令后,是将docker01挂载的宿主机目录,也同docker02进行挂载,所以删除了docker02之后挂载关系是依然存在的</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>实现mysql的数据共享</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">将mysql容器内部的数据挂载到宿主机 之后可以加载shell脚本中</span></span><br><span class="line"><span class="meta">#</span><span class="bash">启动第一个mysql</span></span><br><span class="line">docker run -d -p 3306:3306 --privileged=true  -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql01 mysql</span><br><span class="line"><span class="meta">#</span><span class="bash">启动第二个mysql并挂载第一个mysql</span></span><br><span class="line">docker run -d --privileged=true  --name mysql02 -p 3333:3306 -e MYSQL_ROOT_PASSWORD=123456 --volumes-from 55ed3b9c2ac2 mysql</span><br><span class="line"><span class="meta">#</span><span class="bash">事实证明mysql02已经把mysql01的数据库同步了过来,图片如下</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/05/19/oeuUP3Dil1WGMNI.png" alt="1589870261_1_.jpg"></p>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><p>dockerfile是用来构建docker镜像的命令参数脚本</p>
+<p>构建步骤</p>
+<ol>
+<li>编写dockerfile文件</li>
+<li>docker build成为一个镜像</li>
+<li>docker run运行镜像</li>
+<li>docker pull 上传镜像(DockerHub, 阿里云镜像仓库 )</li>
+</ol>
+<p>官方的镜像大部分都是基础镜像,好多功能都没有,我们通常都会构建自己的镜像</p>
+<p>Dockerfile 命令</p>
+<p><img src="https://i.loli.net/2020/05/19/HyQPNMT6lZvrcGe.png" alt="docekrfile命令.jpg"></p>
+<p><strong>dockerfile构建过程</strong></p>
+<ol>
+<li>每一个保留关键字(指令)都必须是大写字母</li>
+<li>执行顺序从上到下</li>
+<li><code>#</code>表示注释</li>
+<li>每一指令都会提交一个新的镜像层,并提交</li>
+</ol>
+<p><img src="https://i.loli.net/2020/05/19/nNZsCPyRliq9SIh.jpg" alt="u_4047443406,3367621745_fm_11_gp_0.jpg"></p>
+<p>dockerfile逐渐成为企业交付的标准, 必须要掌握</p>
+<p>步骤: 开发-&gt;部署-&gt;运维</p>
+<p>Dockerfile :构建文件, 定义了一切的步骤,源码</p>
+<p>Dockerimages: 通过dockerfile构建的镜像, 最终发布和运行的产品</p>
+<p>Docker容器: 容器就是镜像运行起来的服务器</p>
+<p><img src="https://i.loli.net/2020/05/19/dGWJQIzbmLj2TY8.png" alt="u_268974649,2607019911_fm_26_gp_0.jpg"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编写dockerfile</span></span><br><span class="line">FROM centos</span><br><span class="line">MAINTAINER yafeng&lt;lgaoyafeng@163.com&gt;</span><br><span class="line">ENV MYPATH /usr/local</span><br><span class="line">WORKDIR $MYPATH</span><br><span class="line">RUN yum -y install vim</span><br><span class="line">RUN yum -y install net-tools</span><br><span class="line">EXPOSE 81</span><br><span class="line">CMD echo $MYPATH</span><br><span class="line">CMD echo "----------end----------"</span><br><span class="line">CMD /bin/bash</span><br><span class="line"><span class="meta">#</span><span class="bash">执行构建</span></span><br><span class="line">Removing intermediate container 1d6c0444ffc7</span><br><span class="line">Successfully built 5355575ca8a2 构建成功</span><br><span class="line">[root@linux ceshi]# docker run -it 5355575ca8a2</span><br><span class="line">[root@80367edeafa4 local]# ll</span><br><span class="line">bash: ll: command not found</span><br><span class="line">[root@80367edeafa4 local]# vim acd.txt</span><br><span class="line">[root@80367edeafa4 local]# ifconfig</span><br><span class="line">eth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 172.17.0.4  netmask 255.255.0.0  broadcast 0.0.0.0</span><br><span class="line">        inet6 fe80::42:acff:fe11:4  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 02:42:ac:11:00:04  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 8  bytes 656 (656.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 8  bytes 656 (656.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"><span class="meta">#</span><span class="bash">可以顺利执行vim命令和ifconfig</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>CMD和ENTRYPOINT的区别</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">CMD CMD命令可被替换</span></span><br><span class="line">vim dockerfilecmd</span><br><span class="line">FROM centos</span><br><span class="line">CMD ["ls","-a"]</span><br><span class="line">docker build -f dockerfilecmd -t centoscmd .</span><br><span class="line">[root@linux ceshi]# docker run 269454e99b3b</span><br><span class="line">.</span><br><span class="line">..</span><br><span class="line">.dockerenv</span><br><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">lib64</span><br><span class="line">lost+found</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br><span class="line">[root@linux ceshi]# docker run 269454e99b3b ls -a</span><br><span class="line">.</span><br><span class="line">..</span><br><span class="line">.dockerenv</span><br><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">lib64</span><br><span class="line">lost+found</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br><span class="line">[root@linux ceshi]# docker run 269454e99b3b ls -al</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:40 .</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:40 ..</span><br><span class="line">-rwxr-xr-x.   1 root root   0 May 19 07:40 .dockerenv</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 bin -&gt; usr/bin</span><br><span class="line">drwxr-xr-x.   5 root root 340 May 19 07:40 dev</span><br><span class="line">drwxr-xr-x.   1 root root  66 May 19 07:40 etc</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 home</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 lib -&gt; usr/lib</span><br><span class="line">lrwxrwxrwx.   1 root root   9 May 11  2019 lib64 -&gt; usr/lib64</span><br><span class="line">drwx------.   2 root root   6 Jan 13 21:48 lost+found</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 media</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 mnt</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 opt</span><br><span class="line">dr-xr-xr-x. 288 root root   0 May 19 07:40 proc</span><br><span class="line">dr-xr-x---.   2 root root 162 Jan 13 21:49 root</span><br><span class="line">drwxr-xr-x.   1 root root  21 May 19 07:40 run</span><br><span class="line">lrwxrwxrwx.   1 root root   8 May 11  2019 sbin -&gt; usr/sbin</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 srv</span><br><span class="line">dr-xr-xr-x.  13 root root   0 May 19 00:56 sys</span><br><span class="line">drwxrwxrwt.   7 root root 145 Jan 13 21:49 tmp</span><br><span class="line">drwxr-xr-x.  12 root root 144 Jan 13 21:49 usr</span><br><span class="line">drwxr-xr-x.  20 root root 262 Jan 13 21:49 var</span><br><span class="line"><span class="meta">#</span><span class="bash"> ENTRYPOINT</span></span><br><span class="line">vim dockerfileentry</span><br><span class="line">FROM centos</span><br><span class="line">ENTRYPOINT ["ls","-a"]</span><br><span class="line">[root@linux ceshi]# docker build -f docekrfileentry  -t centosentry .</span><br><span class="line">Sending build context to Docker daemon 6.656 kB</span><br><span class="line">Step 1/2 : FROM centos</span><br><span class="line"><span class="meta"> ---&gt;</span><span class="bash"> 470671670cac</span></span><br><span class="line">Step 2/2 : ENTRYPOINT ls -a</span><br><span class="line"><span class="meta"> ---&gt;</span><span class="bash"> Running <span class="keyword">in</span> f5519b84de16</span></span><br><span class="line"><span class="meta"> ---&gt;</span><span class="bash"> 07e5b62c3645</span></span><br><span class="line">Removing intermediate container f5519b84de16</span><br><span class="line">Successfully built 07e5b62c3645</span><br><span class="line">[root@linux ceshi]# docker run 07e5b62c3645</span><br><span class="line">.</span><br><span class="line">..</span><br><span class="line">.dockerenv</span><br><span class="line">bin</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">home</span><br><span class="line">lib</span><br><span class="line">lib64</span><br><span class="line">lost+found</span><br><span class="line">media</span><br><span class="line">mnt</span><br><span class="line">opt</span><br><span class="line">proc</span><br><span class="line">root</span><br><span class="line">run</span><br><span class="line">sbin</span><br><span class="line">srv</span><br><span class="line">sys</span><br><span class="line">tmp</span><br><span class="line">usr</span><br><span class="line">var</span><br><span class="line">[root@linux ceshi]# docker run 07e5b62c3645 -l</span><br><span class="line">total 0</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:45 .</span><br><span class="line">drwxr-xr-x.   1 root root  17 May 19 07:45 ..</span><br><span class="line">-rwxr-xr-x.   1 root root   0 May 19 07:45 .dockerenv</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 bin -&gt; usr/bin</span><br><span class="line">drwxr-xr-x.   5 root root 340 May 19 07:45 dev</span><br><span class="line">drwxr-xr-x.   1 root root  66 May 19 07:45 etc</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 home</span><br><span class="line">lrwxrwxrwx.   1 root root   7 May 11  2019 lib -&gt; usr/lib</span><br><span class="line">lrwxrwxrwx.   1 root root   9 May 11  2019 lib64 -&gt; usr/lib64</span><br><span class="line">drwx------.   2 root root   6 Jan 13 21:48 lost+found</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 media</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 mnt</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 opt</span><br><span class="line">dr-xr-xr-x. 287 root root   0 May 19 07:45 proc</span><br><span class="line">dr-xr-x---.   2 root root 162 Jan 13 21:49 root</span><br><span class="line">drwxr-xr-x.   1 root root  21 May 19 07:45 run</span><br><span class="line">lrwxrwxrwx.   1 root root   8 May 11  2019 sbin -&gt; usr/sbin</span><br><span class="line">drwxr-xr-x.   2 root root   6 May 11  2019 srv</span><br><span class="line">dr-xr-xr-x.  13 root root   0 May 19 00:56 sys</span><br><span class="line">drwxrwxrwt.   7 root root 145 Jan 13 21:49 tmp</span><br><span class="line">drwxr-xr-x.  12 root root 144 Jan 13 21:49 usr</span><br><span class="line">drwxr-xr-x.  20 root root 262 Jan 13 21:49 var</span><br><span class="line"><span class="meta">#</span><span class="bash">可以看出,最后直接在执行的命令后加上-l命令就可以了,命令可以追加</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="编写自己的tomcat"><a href="#编写自己的tomcat" class="headerlink" title="编写自己的tomcat"></a>编写自己的tomcat</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">编写Dockerfile文件</span></span><br><span class="line">FROM centos</span><br><span class="line">MAINTAINER yafeng &lt;lgaoyafeng@163.com&gt;</span><br><span class="line">COPY readme.txt  /usr/local/readme.txt</span><br><span class="line">ADD jdk-8u211.tar.gz /usr/local/</span><br><span class="line">ADD apache-tomcat-9.0.35.tar.gz /usr/local</span><br><span class="line"></span><br><span class="line">RUN yum -y install vim</span><br><span class="line"></span><br><span class="line">ENV MYPATH /usr/local</span><br><span class="line">WORKDIR $MYPATH</span><br><span class="line">ENV JAVA_HOME /usr/local/jdk1.8.0_211</span><br><span class="line">ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.35</span><br><span class="line">ENV CATALINA_BASH /usr/local/apache-tomcat-9.0.35</span><br><span class="line">ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin</span><br><span class="line"></span><br><span class="line">EXPOSE 8080</span><br><span class="line"></span><br><span class="line">CMD /usr/local/apache-tomcat-9.0.35/bin/startup.sh &amp;&amp; tail -F /usr/local/apache-tomcat-9.0.35/bin/logs/catalina.out</span><br><span class="line"></span><br><span class="line">docker run -d --privileged=true  --name qianyan -p 9091:8080 -v /home/tomcat/test:/usr/local/apache-tomcat-9.0.35/webapps/test -v /home/tomcat/logs:/usr/local/apache-tomcat-9.0.35/logs mycat</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">在/home/tomcat/<span class="built_in">test</span>目录下新建WEB_INF文件夹,并在里面新建web.xml文件,在<span class="built_in">test</span>文件夹下放置index.html文件即可访问</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">修改yum镜像源</span></span><br><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Docker数据卷挂载宿主机</title>
+    <url>/2020/05/15/Docker%E6%95%B0%E6%8D%AE%E5%8D%B7%E6%8C%82%E8%BD%BD%E5%AE%BF%E4%B8%BB%E6%9C%BA/</url>
+    <content><![CDATA[<h1 id="Docker-挂载宿主机文件-目录"><a href="#Docker-挂载宿主机文件-目录" class="headerlink" title="Docker 挂载宿主机文件/目录"></a>Docker 挂载宿主机文件/目录</h1><pre><code>这个问题困扰了很久,上次挂载`redis`的配置文件,就折腾了好久,这次配置`nginx`的配置文件/目录,又忙活了两个小时,其实挂载目录是没什么的问题的,关键是加上了配置文件之后,就会导致容器启动失败,&lt;!--more--&gt;后来百般搜索,从一个大神这找到了问题 ,链接`[https://blog.csdn.net/ii19910410/article/details/88639320?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522158519158119725219964887%2522%252C%2522scm%2522%253A%252220140713.130056874..%2522%257D&amp;request_id=158519158119725219964887&amp;biz_id=0&amp;utm_source=distribute.pc_search_result.none-task](https://blog.csdn.net/ii19910410/article/details/88639320?ops_request_misc=%7B%22request%5Fid%22%3A%22158519158119725219964887%22%2C%22scm%22%3A%2220140713.130056874..%22%7D&amp;request_id=158519158119725219964887&amp;biz_id=0&amp;utm_source=distribute.pc_search_result.none-task)`.</code></pre><p>​        问题的关键是 ,再挂载配置的文件的时候,要提前将配置文件的目录创建好,将配置文件copy过来,最好是官方的配置文件,然后在挂载配置文件的这个地方,注意挂载的是文件,而不是目录. 我的运行命令如下<code>docker run -p 80:80 --name dockerNginx --privileged=true -v /yafenguse/mynginx/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf -v /yafenguse/mynginx/nginx/conf/nginx.conf:/etc/nginx/nginx.conf  -v /yafenguse/mynginx/nginx/logs:/var/log/nginx  -v /yafenguse/mynginx/nginx/html:/usr/share/nginx/html -d nginx</code>,</p>
+<p>以下是配置文件的挂载(切记提前创建):</p>
+<p><code>/yafenguse/mynginx/nginx/conf/nginx.conf:/etc/nginx/nginx.conf</code></p>
+<p>最为关键的是以下命令:<code>--privileged=true</code>,原因是配置了配置文件以后,容器可能启动不成功,就使用该命令</p>
+<p>​        百度之后得知,该命令相当于是已<code>root</code>权限使用    <code>docker</code>启动容器,可能是挂载宿主机的配置文件时,普通的用户权限无效吧,以下是百度的解释:</p>
+<pre><code>大约在0.6版，privileged被引入docker。</code></pre><p>使用该参数，container内的root拥有真正的root权限。<br>否则，container内的root只是外部的一个普通用户权限。<br>privileged启动的容器，可以看到很多host上的设备，并且可以执行mount。<br>甚至允许你在docker容器中启动docker容器。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>HashMap</title>
     <url>/2020/05/21/HashMap/</url>
     <content><![CDATA[<h3 id="哈希表（hash-table）"><a href="#哈希表（hash-table）" class="headerlink" title="哈希表（hash table）"></a>哈希表（hash table）</h3><p>​        也叫散列表，是一种非常重要的数据结构，应用场景及其丰富，许多缓存技术（比如memcached）的核心其实就是在内存中维护一张大的哈希表，本文会对java集合框架中HashMap的实现原理进行讲解，并对JDK7的HashMap源码进行分析。</p>
@@ -479,6 +479,33 @@
       </tags>
   </entry>
   <entry>
+    <title>Redis</title>
+    <url>/2020/05/15/Redis/</url>
+    <content><![CDATA[<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><code>Redis</code></h2><h3 id="非关系型数据库的四种形式"><a href="#非关系型数据库的四种形式" class="headerlink" title="非关系型数据库的四种形式"></a>非关系型数据库的四种形式</h3><p>键值 : <code>Redis</code></p>
+<p>列存储数据库 : <code>HBase</code></p>
+<p>文档型数据库 : <code>MongoDB</code></p>
+<p>图形数据库 : <code>Neo4J</code>,<code>infoGrid</code></p>
+<a id="more"></a>
+
+<h3 id="传统数据库的四大特性"><a href="#传统数据库的四大特性" class="headerlink" title="传统数据库的四大特性"></a>传统数据库的四大特性</h3><p>ACID</p>
+<p><code>Atomictiy</code> : 原子性</p>
+<p><code>Consistency</code> :  一致性</p>
+<p><code>Isolation</code> :  独立性</p>
+<p><code>Durability</code> :  持久性</p>
+<h3 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h3><p>CAP</p>
+<p><code>Consistency</code> : 强一致性</p>
+<p><code>Availability</code> : 可用性</p>
+<p><code>Partiton  tolerance</code>: 分区容错性</p>
+<p>只能满足两个</p>
+<h3 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h3><h4 id="3V-3高"><a href="#3V-3高" class="headerlink" title="3V+3高 :"></a>3V+3高 :</h4><h5 id="大数据时代的3v"><a href="#大数据时代的3v" class="headerlink" title="大数据时代的3v:"></a>大数据时代的3v:</h5><p>1.海量(Volume)</p>
+<p>2.多样(Variety)</p>
+<p>3.实时(Velocity)</p>
+<h5 id="互联网时代的3高"><a href="#互联网时代的3高" class="headerlink" title="互联网时代的3高:"></a>互联网时代的3高:</h5><p>1.高并发</p>
+<p>2.高可扩</p>
+<p>3.高性能</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Jenkins</title>
     <url>/2020/05/21/Jenkins%E9%83%A8%E7%BD%B2%E6%9E%84%E5%BB%BA%E8%BF%90%E8%A1%8C/</url>
     <content><![CDATA[<h2 id="1-linux安装java及部署环境变量"><a href="#1-linux安装java及部署环境变量" class="headerlink" title="1. linux安装java及部署环境变量"></a>1. linux安装java及部署环境变量</h2><p>​        将jdk-8u211-linux-x64.tar.gz上传到服务器对应的文件夹,执行解压命令   tar -zxvf  jdk-8u211-linux-x64.tar.gz,然后配置java环境变量 ,   先   vim  /etc/profile,  将以下代码复制到文件末尾,参考以下</p>
@@ -541,6 +568,34 @@
       <tags>
         <tag>Jenkins， Docker</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Shell脚本</title>
+    <url>/2020/05/20/Shell%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<p>以下脚本为centos安装docker 并安装redis的脚本,demo,后续完善并加入常见的镜像服务</p>
+<a id="more"></a>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">i/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">这是一个docker初始化并安装redis的脚本</span></span><br><span class="line">yum install  -y  docker</span><br><span class="line">systemctl start docker</span><br><span class="line">docker -v</span><br><span class="line">systemctl enable docker</span><br><span class="line">echo "更改docekr镜像源为阿里云"</span><br><span class="line">mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'</span><br><span class="line">&#123;</span><br><span class="line">"registry-mirrors": ["https://5wdpk98o.mirror.aliyuncs.com"]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">mkdir -p /mydata/redis/conf</span><br><span class="line">mkdir -p /mydata/redis/data</span><br><span class="line">touch /mydata/redis/conf/redis.conf</span><br><span class="line"><span class="meta">#</span><span class="bash">此处可以设置为redis镜像启动的名称,这里统一进行了设置</span></span><br><span class="line">name = "redis"</span><br><span class="line">docker run -p 6379:6379  --privileged=true --name $name -v /mydata/redis/data:/data \</span><br><span class="line">-v/mydata/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-d redis redis-server /etc/redis/redis.conf</span><br><span class="line">docker update --restart=always  $name</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/05/15/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>MybatisPlus</title>
@@ -796,40 +851,90 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Redis</title>
-    <url>/2020/05/15/Redis/</url>
-    <content><![CDATA[<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a><code>Redis</code></h2><h3 id="非关系型数据库的四种形式"><a href="#非关系型数据库的四种形式" class="headerlink" title="非关系型数据库的四种形式"></a>非关系型数据库的四种形式</h3><p>键值 : <code>Redis</code></p>
-<p>列存储数据库 : <code>HBase</code></p>
-<p>文档型数据库 : <code>MongoDB</code></p>
-<p>图形数据库 : <code>Neo4J</code>,<code>infoGrid</code></p>
+    <title>redis配置文件</title>
+    <url>/2020/05/15/redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="redis-conf配置"><a href="#redis-conf配置" class="headerlink" title="redis.conf配置"></a>redis.conf配置</h2><p>redis.conf配置说明如下 ：</p>
+<ol>
+<li>Redis默认不是以守护线程的方式运行,可以通过该配置项修改,使用yes启用守护线程, daemonize</li>
+</ol>
+<p>yes</p>
 <a id="more"></a>
 
-<h3 id="传统数据库的四大特性"><a href="#传统数据库的四大特性" class="headerlink" title="传统数据库的四大特性"></a>传统数据库的四大特性</h3><p>ACID</p>
-<p><code>Atomictiy</code> : 原子性</p>
-<p><code>Consistency</code> :  一致性</p>
-<p><code>Isolation</code> :  独立性</p>
-<p><code>Durability</code> :  持久性</p>
-<h3 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h3><p>CAP</p>
-<p><code>Consistency</code> : 强一致性</p>
-<p><code>Availability</code> : 可用性</p>
-<p><code>Partiton  tolerance</code>: 分区容错性</p>
-<p>只能满足两个</p>
-<h3 id="入门概述"><a href="#入门概述" class="headerlink" title="入门概述"></a>入门概述</h3><h4 id="3V-3高"><a href="#3V-3高" class="headerlink" title="3V+3高 :"></a>3V+3高 :</h4><h5 id="大数据时代的3v"><a href="#大数据时代的3v" class="headerlink" title="大数据时代的3v:"></a>大数据时代的3v:</h5><p>1.海量(Volume)</p>
-<p>2.多样(Variety)</p>
-<p>3.实时(Velocity)</p>
-<h5 id="互联网时代的3高"><a href="#互联网时代的3高" class="headerlink" title="互联网时代的3高:"></a>互联网时代的3高:</h5><p>1.高并发</p>
-<p>2.高可扩</p>
-<p>3.高性能</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Shell脚本</title>
-    <url>/2020/05/20/Shell%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<p>以下脚本为centos安装docker 并安装redis的脚本,demo,后续完善并加入常见的镜像服务</p>
-<a id="more"></a>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">i/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">这是一个docker初始化并安装redis的脚本</span></span><br><span class="line">yum install  -y  docker</span><br><span class="line">systemctl start docker</span><br><span class="line">docker -v</span><br><span class="line">systemctl enable docker</span><br><span class="line">echo "更改docekr镜像源为阿里云"</span><br><span class="line">mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'</span><br><span class="line">&#123;</span><br><span class="line">"registry-mirrors": ["https://5wdpk98o.mirror.aliyuncs.com"]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br><span class="line">mkdir -p /mydata/redis/conf</span><br><span class="line">mkdir -p /mydata/redis/data</span><br><span class="line">touch /mydata/redis/conf/redis.conf</span><br><span class="line"><span class="meta">#</span><span class="bash">此处可以设置为redis镜像启动的名称,这里统一进行了设置</span></span><br><span class="line">name = "redis"</span><br><span class="line">docker run -p 6379:6379  --privileged=true --name $name -v /mydata/redis/data:/data \</span><br><span class="line">-v/mydata/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-d redis redis-server /etc/redis/redis.conf</span><br><span class="line">docker update --restart=always  $name</span><br></pre></td></tr></table></figure>
-
+<ol start="2">
+<li><p>当Redis以守护线程运行时,Redis默认会把pid写入/run/redis.pid文件,可以通过profile指定 pidfile/var/run/redis.pid</p>
+</li>
+<li><p>指定Redis监听端口,默认端口为6379,作者在自己的一篇博文中解释了为什么选用6379作为端口,因为6379在手机上上的按键MERZ的对应的号码,而MERZ取自意大利歌女Alessia Merz的名字 </p>
+</li>
+</ol>
+<p>port 6379</p>
+<ol start="4">
+<li>绑定的主机地址 : bind 127.0.0.1</li>
+</ol>
+<p>​     假如需要远程访问的话需将其注释<code>#</code>,或者改为0.0.0.0</p>
+<ol start="5">
+<li><p>当客户端闲置多长时间后关闭连接,如果时间为0,表示关闭该功能, timeout 300</p>
+</li>
+<li><p>指定日志记录级别,Redis总共支持四个级别: debug, verbose, notice, warning, 摩尔恩为verbose</p>
+</li>
+<li><p>日志记录方式,默认为标准输出, 如果配置Redis为守护线程方式运行,而这里又配置为日志记录方式为标注输出,则日志会发送给/dev/null/logfile stdout</p>
+</li>
+<li><p>设置数据库的数量,默认数据库为0,可以使用SELECT<dbid>命令在连接指定数据库id</p>
+<p>database 16</p>
+</li>
+<li><p>指定在多长时间内,有多少次更新操作,就讲数据同步到数据文件,可以多个条件配合 save<seconds><changes></p>
+</li>
+</ol>
+<p>redis默认配置文件中提供了三个条件 :</p>
+<p>save 900 1 </p>
+<p>save 300 10</p>
+<p>save 60 10000</p>
+<p>分别表示900秒(15分钟)内有1个更改,300秒(5分钟)内有10个更改以及60秒有10000个更改</p>
+<ol start="10">
+<li><p>指定存储至本地数据库时是否压缩数据,默认为YES,Redis采用LZF压缩,如果为了节省CPU时间,可以关闭该选项, 但会导致数据库文件变的巨大, rdbcompression yes</p>
+</li>
+<li><p>指定本地数据库文件名, 默认值为 dump.db    dbfilename dump.db</p>
+</li>
+<li><p>指定本地数据库存放目录     dir./</p>
+</li>
+<li><p>设置当本机为slav服务时, 设置master服务的IP地址及端口,在Redis启动时, 它会主动从master进行数据同步,  slaveof<masterip><masterport></p>
+</li>
+<li><p>当master服务设置了密码保护时,salv服务连接master的密码    masterauth <master-password></p>
+</li>
+<li><p>设置Redis连接密码,如果配置了连接密码,客户端在连接Redis时需要通过 AUTH<password>命令提供密码,默认关闭  requirepass fobared</p>
+</li>
+<li><p>设置同一时间最大客户端连接数,默认无限制,Redis可以同时打开的客户端数为为Redis进程可以打开的最大文件描述符数,如果设置maxclients 0, 如果不做限制.当客户端连接数达到限制时,Redis会关闭新的连接并向客户端返回 max number of clients reched错误信息</p>
+</li>
+<li><p>指定Redis最大内存限制,Redis在启动时会把数据加载到内存中, 达到最大内存后, Redis会先尝试清楚已到期或即将到期的key, 当此方法处理后,仍达到最大内存设置,将无法再进行写入操作,但仍可以进行读取操作,Redis新的vm机制,会把key存到内存,value存到swap区 maxmemory<bytes></p>
+</li>
+<li><p>指定是否每次更新操作后进行日志同步记录, Redis在默认情况下是异步的把数据写入磁盘, 如果不开启, 可能会在断电时导致一段时间内的数据消失. 因为Redis本身同步数据文件是按上面save条件来同步的,所以有的数据会在一段时间内只存在内存中,默认为 no    appendonly no</p>
+</li>
+<li><p>指定更新日志文件名, 默认为appendonly.aof      apppendfiename appendonly.aof</p>
+</li>
+<li><p>指定跟新日志条件, 共有3个可选值 : </p>
+</li>
+<li><p>no : 表示等操作系统进行数据缓存同步到磁盘</p>
+<p>always : 表示你每次更新操作后手动地调用fsnc()将数据写到磁盘(慢,安全)</p>
+<p>everysec : 表示每秒同步一次 (折中,默认值)</p>
+</li>
+<li><p>虚拟内存文件路径, 默认值为 /tem/redis.swap, 不可多个Redis实例共享 vm-swap-file/temp/redis.swap</p>
+</li>
+<li><p>将所有大于vm-max-momory的数据存入虚拟内存,无论vm-max-memory设置多小, 所有索引数据都是内存存储的(Redis的索引数据就是keys),也就是说,当vm-max-memory设置为0的时候,其实所有value都存在于磁盘,默认值为0     vm-max-memory 0 </p>
+</li>
+<li><p>Redis swap文件分成了很多的page,一个对象可以保存多个page上面, 但一个page上不能被多个对象共享, vm-page-size是要根据储存的数据大小来设定的, 作者建议如果存储很多小对象,page的大小最好设置为32或者64bytes;如果存储很大对象,则可以使用更大的page,如果不确定, 就使用默认值  vm-page-size 32</p>
+</li>
+<li><p>设置swap文件中的page数量,由于页表(一种表示页面空闲或使用的bitmap)是放在内存中的, 在磁盘上每8个pages将消耗一个byte的内存, vm-pages 134217728</p>
+</li>
+<li><p>设置访问swap问价你的线程数,最好不要超过及其的核数, 如果设置为0, 那么所有的swap文件都是串行的, 可能会造成比较长的延迟,默认值为4 vm-max-threads 4 </p>
+</li>
+<li><p>上设置在向客户端应答时,是否把较小的包合并为一个包发送,默认为开启,  glueoutputbuf     yes</p>
+</li>
+<li><p>指定在超过一定的数量户或者最大的元素超过某一临界值时,采用一种特殊的哈希算法, hash-max-zipmap-entries   64        hash-max-zipmap-values  512</p>
+</li>
+<li><p>指定是否激活重置哈希,默认为开启   activerehashing yes</p>
+</li>
+<li><p>指定包含其他的配置文件, 可以在同一主机上多个Redis实例主键使用同一配置文件, 而同时各个实例又拥有自己的特定配置文件, include /path / to/local.conf</p>
+<h4 id="总结-在linux系统上-配置文件很重要-因为没有图形界面-所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的-等同于windows的设置-在更改的时候最好将配置文件-xxxx-conf单独copy一份来修改-这样可以避免修改错误不能回滚-修改完成后可以通过这份新的配置文件来启动应用-达到修改配置的目的"><a href="#总结-在linux系统上-配置文件很重要-因为没有图形界面-所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的-等同于windows的设置-在更改的时候最好将配置文件-xxxx-conf单独copy一份来修改-这样可以避免修改错误不能回滚-修改完成后可以通过这份新的配置文件来启动应用-达到修改配置的目的" class="headerlink" title="总结  : 在linux系统上,配置文件很重要,因为没有图形界面,所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的,等同于windows的设置,在更改的时候最好将配置文件 xxxx.conf单独copy一份来修改,这样可以避免修改错误不能回滚,修改完成后可以通过这份新的配置文件来启动应用,达到修改配置的目的"></a>总结  : 在linux系统上,配置文件很重要,因为没有图形界面,所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的,等同于windows的设置,在更改的时候最好将配置文件 xxxx.conf单独copy一份来修改,这样可以避免修改错误不能回滚,修改完成后可以通过这份新的配置文件来启动应用,达到修改配置的目的</h4></li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -963,111 +1068,6 @@
 <p>以前也整理过Intellij的快捷键，这次就按照我日常开发时的使用频率，简单分类列一下我最喜欢的十大快捷-神-键吧。 </p>
 <p><strong>1 智能提示:</strong> </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.2.1\bin\jetbrains-agent.jar</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/05/15/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>redis配置文件</title>
-    <url>/2020/05/15/redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h2 id="redis-conf配置"><a href="#redis-conf配置" class="headerlink" title="redis.conf配置"></a>redis.conf配置</h2><p>redis.conf配置说明如下 ：</p>
-<ol>
-<li>Redis默认不是以守护线程的方式运行,可以通过该配置项修改,使用yes启用守护线程, daemonize</li>
-</ol>
-<p>yes</p>
-<a id="more"></a>
-
-<ol start="2">
-<li><p>当Redis以守护线程运行时,Redis默认会把pid写入/run/redis.pid文件,可以通过profile指定 pidfile/var/run/redis.pid</p>
-</li>
-<li><p>指定Redis监听端口,默认端口为6379,作者在自己的一篇博文中解释了为什么选用6379作为端口,因为6379在手机上上的按键MERZ的对应的号码,而MERZ取自意大利歌女Alessia Merz的名字 </p>
-</li>
-</ol>
-<p>port 6379</p>
-<ol start="4">
-<li>绑定的主机地址 : bind 127.0.0.1</li>
-</ol>
-<p>​     假如需要远程访问的话需将其注释<code>#</code>,或者改为0.0.0.0</p>
-<ol start="5">
-<li><p>当客户端闲置多长时间后关闭连接,如果时间为0,表示关闭该功能, timeout 300</p>
-</li>
-<li><p>指定日志记录级别,Redis总共支持四个级别: debug, verbose, notice, warning, 摩尔恩为verbose</p>
-</li>
-<li><p>日志记录方式,默认为标准输出, 如果配置Redis为守护线程方式运行,而这里又配置为日志记录方式为标注输出,则日志会发送给/dev/null/logfile stdout</p>
-</li>
-<li><p>设置数据库的数量,默认数据库为0,可以使用SELECT<dbid>命令在连接指定数据库id</p>
-<p>database 16</p>
-</li>
-<li><p>指定在多长时间内,有多少次更新操作,就讲数据同步到数据文件,可以多个条件配合 save<seconds><changes></p>
-</li>
-</ol>
-<p>redis默认配置文件中提供了三个条件 :</p>
-<p>save 900 1 </p>
-<p>save 300 10</p>
-<p>save 60 10000</p>
-<p>分别表示900秒(15分钟)内有1个更改,300秒(5分钟)内有10个更改以及60秒有10000个更改</p>
-<ol start="10">
-<li><p>指定存储至本地数据库时是否压缩数据,默认为YES,Redis采用LZF压缩,如果为了节省CPU时间,可以关闭该选项, 但会导致数据库文件变的巨大, rdbcompression yes</p>
-</li>
-<li><p>指定本地数据库文件名, 默认值为 dump.db    dbfilename dump.db</p>
-</li>
-<li><p>指定本地数据库存放目录     dir./</p>
-</li>
-<li><p>设置当本机为slav服务时, 设置master服务的IP地址及端口,在Redis启动时, 它会主动从master进行数据同步,  slaveof<masterip><masterport></p>
-</li>
-<li><p>当master服务设置了密码保护时,salv服务连接master的密码    masterauth <master-password></p>
-</li>
-<li><p>设置Redis连接密码,如果配置了连接密码,客户端在连接Redis时需要通过 AUTH<password>命令提供密码,默认关闭  requirepass fobared</p>
-</li>
-<li><p>设置同一时间最大客户端连接数,默认无限制,Redis可以同时打开的客户端数为为Redis进程可以打开的最大文件描述符数,如果设置maxclients 0, 如果不做限制.当客户端连接数达到限制时,Redis会关闭新的连接并向客户端返回 max number of clients reched错误信息</p>
-</li>
-<li><p>指定Redis最大内存限制,Redis在启动时会把数据加载到内存中, 达到最大内存后, Redis会先尝试清楚已到期或即将到期的key, 当此方法处理后,仍达到最大内存设置,将无法再进行写入操作,但仍可以进行读取操作,Redis新的vm机制,会把key存到内存,value存到swap区 maxmemory<bytes></p>
-</li>
-<li><p>指定是否每次更新操作后进行日志同步记录, Redis在默认情况下是异步的把数据写入磁盘, 如果不开启, 可能会在断电时导致一段时间内的数据消失. 因为Redis本身同步数据文件是按上面save条件来同步的,所以有的数据会在一段时间内只存在内存中,默认为 no    appendonly no</p>
-</li>
-<li><p>指定更新日志文件名, 默认为appendonly.aof      apppendfiename appendonly.aof</p>
-</li>
-<li><p>指定跟新日志条件, 共有3个可选值 : </p>
-</li>
-<li><p>no : 表示等操作系统进行数据缓存同步到磁盘</p>
-<p>always : 表示你每次更新操作后手动地调用fsnc()将数据写到磁盘(慢,安全)</p>
-<p>everysec : 表示每秒同步一次 (折中,默认值)</p>
-</li>
-<li><p>虚拟内存文件路径, 默认值为 /tem/redis.swap, 不可多个Redis实例共享 vm-swap-file/temp/redis.swap</p>
-</li>
-<li><p>将所有大于vm-max-momory的数据存入虚拟内存,无论vm-max-memory设置多小, 所有索引数据都是内存存储的(Redis的索引数据就是keys),也就是说,当vm-max-memory设置为0的时候,其实所有value都存在于磁盘,默认值为0     vm-max-memory 0 </p>
-</li>
-<li><p>Redis swap文件分成了很多的page,一个对象可以保存多个page上面, 但一个page上不能被多个对象共享, vm-page-size是要根据储存的数据大小来设定的, 作者建议如果存储很多小对象,page的大小最好设置为32或者64bytes;如果存储很大对象,则可以使用更大的page,如果不确定, 就使用默认值  vm-page-size 32</p>
-</li>
-<li><p>设置swap文件中的page数量,由于页表(一种表示页面空闲或使用的bitmap)是放在内存中的, 在磁盘上每8个pages将消耗一个byte的内存, vm-pages 134217728</p>
-</li>
-<li><p>设置访问swap问价你的线程数,最好不要超过及其的核数, 如果设置为0, 那么所有的swap文件都是串行的, 可能会造成比较长的延迟,默认值为4 vm-max-threads 4 </p>
-</li>
-<li><p>上设置在向客户端应答时,是否把较小的包合并为一个包发送,默认为开启,  glueoutputbuf     yes</p>
-</li>
-<li><p>指定在超过一定的数量户或者最大的元素超过某一临界值时,采用一种特殊的哈希算法, hash-max-zipmap-entries   64        hash-max-zipmap-values  512</p>
-</li>
-<li><p>指定是否激活重置哈希,默认为开启   activerehashing yes</p>
-</li>
-<li><p>指定包含其他的配置文件, 可以在同一主机上多个Redis实例主键使用同一配置文件, 而同时各个实例又拥有自己的特定配置文件, include /path / to/local.conf</p>
-<h4 id="总结-在linux系统上-配置文件很重要-因为没有图形界面-所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的-等同于windows的设置-在更改的时候最好将配置文件-xxxx-conf单独copy一份来修改-这样可以避免修改错误不能回滚-修改完成后可以通过这份新的配置文件来启动应用-达到修改配置的目的"><a href="#总结-在linux系统上-配置文件很重要-因为没有图形界面-所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的-等同于windows的设置-在更改的时候最好将配置文件-xxxx-conf单独copy一份来修改-这样可以避免修改错误不能回滚-修改完成后可以通过这份新的配置文件来启动应用-达到修改配置的目的" class="headerlink" title="总结  : 在linux系统上,配置文件很重要,因为没有图形界面,所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的,等同于windows的设置,在更改的时候最好将配置文件 xxxx.conf单独copy一份来修改,这样可以避免修改错误不能回滚,修改完成后可以通过这份新的配置文件来启动应用,达到修改配置的目的"></a>总结  : 在linux系统上,配置文件很重要,因为没有图形界面,所以几乎所以所有的更改配置的操作都是通过修改配置文件来完成的,等同于windows的设置,在更改的时候最好将配置文件 xxxx.conf单独copy一份来修改,这样可以避免修改错误不能回滚,修改完成后可以通过这份新的配置文件来启动应用,达到修改配置的目的</h4></li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>ssh踩坑经历</title>
@@ -1418,6 +1418,18 @@
 ]]></content>
   </entry>
   <entry>
+    <title>快速排序</title>
+    <url>/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Quick2Sort</span><span class="params">(values []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(values) &lt;= <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	mid, i := values[<span class="number">0</span>], <span class="number">1</span></span><br><span class="line">	head, tail := <span class="number">0</span>, <span class="built_in">len</span>(values)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> head &lt; tail &#123;</span><br><span class="line">		fmt.Println(values)</span><br><span class="line">		<span class="keyword">if</span> values[i] &gt; mid &#123;</span><br><span class="line">			values[i], values[tail] = values[tail], values[i]</span><br><span class="line">			tail--</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			values[i], values[head] = values[head], values[i]</span><br><span class="line">			head++</span><br><span class="line">			i++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	values[head] = mid</span><br><span class="line">	Quick2Sort(values[:head])</span><br><span class="line">	Quick2Sort(values[head+<span class="number">1</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>​        第一步,取排序数组的第一个元素values[0],然后从第二个元素遍历数组,将values[0]与该元素比较,如果大于values[0],就将其放到数组末尾(依次往前),否则放到前边(依次往后),直到两个指针相遇,然后将中间值与第一个数进行调换,然后以改值为中心将其分割为两个数组,继续递归调用该方法.</p>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ShellSort</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="comment">//外层步长控制</span></span><br><span class="line">    <span class="keyword">for</span> step := <span class="built_in">len</span>(nums) / <span class="number">2</span>; step &gt; <span class="number">0</span>; step /= <span class="number">2</span> &#123;</span><br><span class="line">        <span class="comment">//开始插入排序</span></span><br><span class="line">        <span class="keyword">for</span> i := step; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">            <span class="comment">//满足条件则插入</span></span><br><span class="line">            <span class="keyword">for</span> j := i - step; j &gt;= <span class="number">0</span> &amp;&amp; nums[j+step] &lt; nums[j]; j -= step &#123;</span><br><span class="line">                nums[j], nums[j+step] = nums[j+step], nums[j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>本地搭建Gitlab</title>
     <url>/2020/05/15/%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BAGitlab/</url>
     <content><![CDATA[<h1 id="本地搭建GitLab环境"><a href="#本地搭建GitLab环境" class="headerlink" title="本地搭建GitLab环境"></a>本地搭建GitLab环境</h1><h4 id="1-执行官网的命令"><a href="#1-执行官网的命令" class="headerlink" title="1.  执行官网的命令"></a>1.  执行官网的命令</h4><p>执行gitlab官网提供的命令, 部署环境, 并下载gitlab到本地    <strong>官网： <a href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a></strong></p>
@@ -1433,18 +1445,6 @@
 <h4 id="4-修改配置文件"><a href="#4-修改配置文件" class="headerlink" title="4. 修改配置文件"></a>4. 修改配置文件</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p /etc/gitlab</span><br><span class="line">sudo touch /etc/gitlab/gitlab.rb</span><br><span class="line">sudo chmod 600 /etc/gitlab/gitlab.rb</span><br><span class="line">sudo gedit /etc/gitlab/gitlab.rb</span><br><span class="line"><span class="meta">#</span><span class="bash">更改配置文件</span></span><br><span class="line">vim  /etc/gitlab/gitlab.rb</span><br><span class="line"><span class="meta">#</span><span class="bash">将以下地址改为gitlab中的ip地址</span></span><br><span class="line">external_url 'http://192.168.0.228'</span><br><span class="line"><span class="meta">#</span><span class="bash">修改完IP执行（启动）   </span></span><br><span class="line">sudo gitlab-ctl reconfigure</span><br><span class="line"><span class="meta">#</span><span class="bash">验证更改结果</span></span><br><span class="line"> /opt/gitlab/embedded/service/gitlab-rails/config/gitlab.yml</span><br></pre></td></tr></table></figure>
 
 <h4 id="5-浏览器访问"><a href="#5-浏览器访问" class="headerlink" title="5. 浏览器访问"></a>5. 浏览器访问</h4><p>ip:端口</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>快速排序</title>
-    <url>/2020/05/15/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Quick2Sort</span><span class="params">(values []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(values) &lt;= <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	mid, i := values[<span class="number">0</span>], <span class="number">1</span></span><br><span class="line">	head, tail := <span class="number">0</span>, <span class="built_in">len</span>(values)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> head &lt; tail &#123;</span><br><span class="line">		fmt.Println(values)</span><br><span class="line">		<span class="keyword">if</span> values[i] &gt; mid &#123;</span><br><span class="line">			values[i], values[tail] = values[tail], values[i]</span><br><span class="line">			tail--</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			values[i], values[head] = values[head], values[i]</span><br><span class="line">			head++</span><br><span class="line">			i++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	values[head] = mid</span><br><span class="line">	Quick2Sort(values[:head])</span><br><span class="line">	Quick2Sort(values[head+<span class="number">1</span>:])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<p>​        第一步,取排序数组的第一个元素values[0],然后从第二个元素遍历数组,将values[0]与该元素比较,如果大于values[0],就将其放到数组末尾(依次往前),否则放到前边(依次往后),直到两个指针相遇,然后将中间值与第一个数进行调换,然后以改值为中心将其分割为两个数组,继续递归调用该方法.</p>
-<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ShellSort</span><span class="params">(nums []<span class="keyword">int</span>)</span> []<span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="comment">//外层步长控制</span></span><br><span class="line">    <span class="keyword">for</span> step := <span class="built_in">len</span>(nums) / <span class="number">2</span>; step &gt; <span class="number">0</span>; step /= <span class="number">2</span> &#123;</span><br><span class="line">        <span class="comment">//开始插入排序</span></span><br><span class="line">        <span class="keyword">for</span> i := step; i &lt; <span class="built_in">len</span>(nums); i++ &#123;</span><br><span class="line">            <span class="comment">//满足条件则插入</span></span><br><span class="line">            <span class="keyword">for</span> j := i - step; j &gt;= <span class="number">0</span> &amp;&amp; nums[j+step] &lt; nums[j]; j -= step &#123;</span><br><span class="line">                nums[j], nums[j+step] = nums[j+step], nums[j]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nums</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 ]]></content>
   </entry>
   <entry>
@@ -1491,6 +1491,23 @@
 ]]></content>
   </entry>
   <entry>
+    <title>猜数字</title>
+    <url>/2020/05/15/%E7%8C%9C%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<h1 id="猜数字问题XAXB-文曲星-go语言实现"><a href="#猜数字问题XAXB-文曲星-go语言实现" class="headerlink" title="猜数字问题XAXB,文曲星,go语言实现"></a>猜数字问题XAXB,文曲星,go语言实现</h1><p>同事给我甩过来一个题,如下<br>猜数字游戏通常由两个人玩，一方出数字，一方猜。出数字的人要想好一个没有重复数<br>字的 4 个数，不能让猜的人知道。猜的人就可以开始猜。每猜一个数字，出数者就要根据这<br>个数字给出几 A 几 B，其中 A 前面的数字表示位置正确的数的个数，而 B 前的数字表示数字<br>正确而位置不对的数的个数。如正确答案为 5234，而猜的人猜 5346，则是 1A2B，其中有<br>一个 5 的位置对了，记为 1A，而 3 和 4 这两个数字对了，而位置没对，因此记为 2B，合起<br>来就是 1A2B。接着猜的人再根据出题者的几 A 几 B 继续猜，直到猜中（即 4A0B）为止。<br>猜的人有 8 次机会。</p>
+<a id="more"></a>
+
+<p>例如：<br>乙出一个数字，甲猜。<br>  甲       乙<br>1234 1A0B<br>5678 2A1B<br>5674 1A1B<br>5638 1A1B<br>2678 2A2B<br>6278 4A0B(猜中)<br>现需设计一个程序，以甲的身份(注意是甲的身份)猜对方的数字。<br>请设计方案并且列出主要方法名。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>我用的是暴力解法:<br>1.将四位数字中所有的不重复数字找出,并存到切片中.代码如下<br>//获取所有不重复的四位数字</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取所有的不重复四位数字,存在切片中(由于使用的是数字所以1000一下的显示为三位,但后续也会将其当四位数字处理)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numbs</span><span class="params">()</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">	arr := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="number">10</span>; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> j == i &#123;</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> m := <span class="number">0</span>; m &lt; <span class="number">10</span>; m++ &#123;</span><br><span class="line">				<span class="keyword">if</span> m == j || m == i &#123;</span><br><span class="line">					<span class="keyword">continue</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span> n := <span class="number">0</span>; n &lt; <span class="number">10</span>; n++ &#123;</span><br><span class="line">					<span class="keyword">if</span> n == m || n == j || n == i &#123;</span><br><span class="line">						<span class="keyword">continue</span></span><br><span class="line">					&#125;</span><br><span class="line">					a := i*<span class="number">1000</span> + j*<span class="number">100</span> + m*<span class="number">10</span> + n</span><br><span class="line">					arr = <span class="built_in">append</span>(arr, a)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.取切片中的第一个数(0123)去跟目标值匹配,得到一个结果,类似0A1B,记下该结果</p>
+<p>3.重点来了,循环将第一个数跟所有的数匹配,得到结果这里我直接省事返回的是 “01”这种,<br>然后将这个结果和第二步的结果去比对,不一样的统统删除(这里因为切片的删除比较麻烦,我是将其赋值为0),代码如下</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">​<span class="string">``</span><span class="string">`go</span></span><br><span class="line"><span class="string">//这是将两数进行比对的方法</span></span><br><span class="line"><span class="string">func match(target int, numInp int) string &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	numMap := make(map[int]int)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	for i := 0; i &lt; 4; i++ &#123;</span></span><br><span class="line"><span class="string">	//将四位数分别放到map中,对应key 为1 2 3 4 </span></span><br><span class="line"><span class="string">		a := target</span></span><br><span class="line"><span class="string">		if a &lt; 1000 &#123;</span></span><br><span class="line"><span class="string">			numMap[1] = 0</span></span><br><span class="line"><span class="string">			numMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			numMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			numMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125; else &#123;</span></span><br><span class="line"><span class="string">			numMap[1] = a / 1000</span></span><br><span class="line"><span class="string">			numMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			numMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			numMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	inpMap := make(map[int]int)</span></span><br><span class="line"><span class="string">	for i := 0; i &lt; 4; i++ &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		a := numInp</span></span><br><span class="line"><span class="string">		if a &lt; 1000 &#123;</span></span><br><span class="line"><span class="string">			inpMap[1] = 0</span></span><br><span class="line"><span class="string">			inpMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			inpMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			inpMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125; else &#123;</span></span><br><span class="line"><span class="string">			inpMap[1] = a / 1000</span></span><br><span class="line"><span class="string">			inpMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			inpMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			inpMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	var counta int</span></span><br><span class="line"><span class="string">	//将两个数对应的map中的对应的位比对,相等</span></span><br><span class="line"><span class="string">	for i := 1; i &lt; 5; i++ &#123;</span></span><br><span class="line"><span class="string">		if numMap[i] == inpMap[i] &#123;</span></span><br><span class="line"><span class="string">			counta++</span></span><br><span class="line"><span class="string">			delete(numMap, i)</span></span><br><span class="line"><span class="string">			delete(inpMap, i)</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	//fmt.Println(numMap)</span></span><br><span class="line"><span class="string">	//fmt.Println(inpMap)</span></span><br><span class="line"><span class="string">	var countb int</span></span><br><span class="line"><span class="string">	for i := 1; i &lt; 5; i++ &#123;</span></span><br><span class="line"><span class="string">		_, ok := inpMap[i]</span></span><br><span class="line"><span class="string">		if !ok &#123;</span></span><br><span class="line"><span class="string">			continue</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">		for j := 1; j &lt; 5; j++ &#123;</span></span><br><span class="line"><span class="string">			_, ok := numMap[j]</span></span><br><span class="line"><span class="string">			if !ok &#123;</span></span><br><span class="line"><span class="string">				continue</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">			if inpMap[i] == numMap[j] &#123;</span></span><br><span class="line"><span class="string">				countb++</span></span><br><span class="line"><span class="string">				delete(inpMap, i)</span></span><br><span class="line"><span class="string">				delete(numMap, j)</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	//fmt.Printf("%v A %v B", counta, countb)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	return strconv.Itoa(counta)+strconv.Itoa(countb)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//判断结果的方法</span></span><br><span class="line"><span class="string">func main() &#123;</span></span><br><span class="line"><span class="string">	arr := numbs()</span></span><br><span class="line"><span class="string">	num := arr[0]</span></span><br><span class="line"><span class="string">	fmt.Println(num)</span></span><br><span class="line"><span class="string">	var count int</span></span><br><span class="line"><span class="string">	for &#123;</span></span><br><span class="line"><span class="string">		fmt.Println("请输入猜的结果1A1B既输入11")</span></span><br><span class="line"><span class="string">		var result string</span></span><br><span class="line"><span class="string">		fmt.Scanln(&amp;result)</span></span><br><span class="line"><span class="string">		for i := 0; i &lt; len(arr); i++ &#123;</span></span><br><span class="line"><span class="string">			if arr[i] == 0 &#123;</span></span><br><span class="line"><span class="string">				continue</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">			str := match(num, arr[i])</span></span><br><span class="line"><span class="string">			fmt.Println(str)</span></span><br><span class="line"><span class="string">			if result != str &#123;</span></span><br><span class="line"><span class="string">				arr[i] = 0</span></span><br><span class="line"><span class="string">				count++</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">		fmt.Printf("count: %v \n",count)</span></span><br><span class="line"><span class="string">		for i := 0; i &lt; len(arr); i++ &#123;</span></span><br><span class="line"><span class="string">			if arr[i] != 0 &#123;</span></span><br><span class="line"><span class="string">				fmt.Printf("下一个数字 %v \n", arr[i])</span></span><br><span class="line"><span class="string">				num = arr[i]</span></span><br><span class="line"><span class="string">				break</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		if count == 5039 &#123;</span></span><br><span class="line"><span class="string">			for i := 0; i &lt; len(arr); i++ &#123;</span></span><br><span class="line"><span class="string">				if arr[i] != 0 &#123;</span></span><br><span class="line"><span class="string">					fmt.Printf("正确答案: %v", arr[i])</span></span><br><span class="line"><span class="string">					return</span></span><br><span class="line"><span class="string">				&#125;</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">​</span></span><br></pre></td></tr></table></figure>
+<p>```</p>
+<p>执行一轮后, 继续给出切片中剩余不为零的第一个元素,将获取的值继续给到程序中进行比对,直到切片中只有一个不为0元素,即为正确数字</p>
+<p>4.此算法最多是8步,平均值因为做的实验较少,未知,还有其他更好的算法,希望大佬指出</p>
+]]></content>
+  </entry>
+  <entry>
     <title>求二数的最大公约数</title>
     <url>/2020/05/15/%E6%B1%82%E4%BA%8C%E6%95%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/</url>
     <content><![CDATA[<h1 id="二数的最大公约数"><a href="#二数的最大公约数" class="headerlink" title="二数的最大公约数"></a>二数的最大公约数</h1><h3 id="1-辗转相除法"><a href="#1-辗转相除法" class="headerlink" title="1. 辗转相除法"></a>1. 辗转相除法</h3><p>​        又名欧几里得算法（Euclidean algorithm），该算法的目的 是求出两个正整数的最大公约数。它是已知最古老的算法， 其产生时间可追溯至公 元前300年前。</p>
@@ -1527,23 +1544,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>猜数字</title>
-    <url>/2020/05/15/%E7%8C%9C%E6%95%B0%E5%AD%97/</url>
-    <content><![CDATA[<h1 id="猜数字问题XAXB-文曲星-go语言实现"><a href="#猜数字问题XAXB-文曲星-go语言实现" class="headerlink" title="猜数字问题XAXB,文曲星,go语言实现"></a>猜数字问题XAXB,文曲星,go语言实现</h1><p>同事给我甩过来一个题,如下<br>猜数字游戏通常由两个人玩，一方出数字，一方猜。出数字的人要想好一个没有重复数<br>字的 4 个数，不能让猜的人知道。猜的人就可以开始猜。每猜一个数字，出数者就要根据这<br>个数字给出几 A 几 B，其中 A 前面的数字表示位置正确的数的个数，而 B 前的数字表示数字<br>正确而位置不对的数的个数。如正确答案为 5234，而猜的人猜 5346，则是 1A2B，其中有<br>一个 5 的位置对了，记为 1A，而 3 和 4 这两个数字对了，而位置没对，因此记为 2B，合起<br>来就是 1A2B。接着猜的人再根据出题者的几 A 几 B 继续猜，直到猜中（即 4A0B）为止。<br>猜的人有 8 次机会。</p>
-<a id="more"></a>
-
-<p>例如：<br>乙出一个数字，甲猜。<br>  甲       乙<br>1234 1A0B<br>5678 2A1B<br>5674 1A1B<br>5638 1A1B<br>2678 2A2B<br>6278 4A0B(猜中)<br>现需设计一个程序，以甲的身份(注意是甲的身份)猜对方的数字。<br>请设计方案并且列出主要方法名。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>我用的是暴力解法:<br>1.将四位数字中所有的不重复数字找出,并存到切片中.代码如下<br>//获取所有不重复的四位数字</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">//获取所有的不重复四位数字,存在切片中(由于使用的是数字所以1000一下的显示为三位,但后续也会将其当四位数字处理)</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numbs</span><span class="params">()</span> []<span class="title">int</span></span> &#123;</span><br><span class="line">	arr := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="number">10</span>; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> j == i &#123;</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> m := <span class="number">0</span>; m &lt; <span class="number">10</span>; m++ &#123;</span><br><span class="line">				<span class="keyword">if</span> m == j || m == i &#123;</span><br><span class="line">					<span class="keyword">continue</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">for</span> n := <span class="number">0</span>; n &lt; <span class="number">10</span>; n++ &#123;</span><br><span class="line">					<span class="keyword">if</span> n == m || n == j || n == i &#123;</span><br><span class="line">						<span class="keyword">continue</span></span><br><span class="line">					&#125;</span><br><span class="line">					a := i*<span class="number">1000</span> + j*<span class="number">100</span> + m*<span class="number">10</span> + n</span><br><span class="line">					arr = <span class="built_in">append</span>(arr, a)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2.取切片中的第一个数(0123)去跟目标值匹配,得到一个结果,类似0A1B,记下该结果</p>
-<p>3.重点来了,循环将第一个数跟所有的数匹配,得到结果这里我直接省事返回的是 “01”这种,<br>然后将这个结果和第二步的结果去比对,不一样的统统删除(这里因为切片的删除比较麻烦,我是将其赋值为0),代码如下</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">​<span class="string">``</span><span class="string">`go</span></span><br><span class="line"><span class="string">//这是将两数进行比对的方法</span></span><br><span class="line"><span class="string">func match(target int, numInp int) string &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	numMap := make(map[int]int)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	for i := 0; i &lt; 4; i++ &#123;</span></span><br><span class="line"><span class="string">	//将四位数分别放到map中,对应key 为1 2 3 4 </span></span><br><span class="line"><span class="string">		a := target</span></span><br><span class="line"><span class="string">		if a &lt; 1000 &#123;</span></span><br><span class="line"><span class="string">			numMap[1] = 0</span></span><br><span class="line"><span class="string">			numMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			numMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			numMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125; else &#123;</span></span><br><span class="line"><span class="string">			numMap[1] = a / 1000</span></span><br><span class="line"><span class="string">			numMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			numMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			numMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	inpMap := make(map[int]int)</span></span><br><span class="line"><span class="string">	for i := 0; i &lt; 4; i++ &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		a := numInp</span></span><br><span class="line"><span class="string">		if a &lt; 1000 &#123;</span></span><br><span class="line"><span class="string">			inpMap[1] = 0</span></span><br><span class="line"><span class="string">			inpMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			inpMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			inpMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125; else &#123;</span></span><br><span class="line"><span class="string">			inpMap[1] = a / 1000</span></span><br><span class="line"><span class="string">			inpMap[2] = (a % 1000) / 100</span></span><br><span class="line"><span class="string">			inpMap[3] = (a % 100) / 10</span></span><br><span class="line"><span class="string">			inpMap[4] = a % 10</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	var counta int</span></span><br><span class="line"><span class="string">	//将两个数对应的map中的对应的位比对,相等</span></span><br><span class="line"><span class="string">	for i := 1; i &lt; 5; i++ &#123;</span></span><br><span class="line"><span class="string">		if numMap[i] == inpMap[i] &#123;</span></span><br><span class="line"><span class="string">			counta++</span></span><br><span class="line"><span class="string">			delete(numMap, i)</span></span><br><span class="line"><span class="string">			delete(inpMap, i)</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	//fmt.Println(numMap)</span></span><br><span class="line"><span class="string">	//fmt.Println(inpMap)</span></span><br><span class="line"><span class="string">	var countb int</span></span><br><span class="line"><span class="string">	for i := 1; i &lt; 5; i++ &#123;</span></span><br><span class="line"><span class="string">		_, ok := inpMap[i]</span></span><br><span class="line"><span class="string">		if !ok &#123;</span></span><br><span class="line"><span class="string">			continue</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">		for j := 1; j &lt; 5; j++ &#123;</span></span><br><span class="line"><span class="string">			_, ok := numMap[j]</span></span><br><span class="line"><span class="string">			if !ok &#123;</span></span><br><span class="line"><span class="string">				continue</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">			if inpMap[i] == numMap[j] &#123;</span></span><br><span class="line"><span class="string">				countb++</span></span><br><span class="line"><span class="string">				delete(inpMap, i)</span></span><br><span class="line"><span class="string">				delete(numMap, j)</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">	//fmt.Printf("%v A %v B", counta, countb)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">	return strconv.Itoa(counta)+strconv.Itoa(countb)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//判断结果的方法</span></span><br><span class="line"><span class="string">func main() &#123;</span></span><br><span class="line"><span class="string">	arr := numbs()</span></span><br><span class="line"><span class="string">	num := arr[0]</span></span><br><span class="line"><span class="string">	fmt.Println(num)</span></span><br><span class="line"><span class="string">	var count int</span></span><br><span class="line"><span class="string">	for &#123;</span></span><br><span class="line"><span class="string">		fmt.Println("请输入猜的结果1A1B既输入11")</span></span><br><span class="line"><span class="string">		var result string</span></span><br><span class="line"><span class="string">		fmt.Scanln(&amp;result)</span></span><br><span class="line"><span class="string">		for i := 0; i &lt; len(arr); i++ &#123;</span></span><br><span class="line"><span class="string">			if arr[i] == 0 &#123;</span></span><br><span class="line"><span class="string">				continue</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">			str := match(num, arr[i])</span></span><br><span class="line"><span class="string">			fmt.Println(str)</span></span><br><span class="line"><span class="string">			if result != str &#123;</span></span><br><span class="line"><span class="string">				arr[i] = 0</span></span><br><span class="line"><span class="string">				count++</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">		fmt.Printf("count: %v \n",count)</span></span><br><span class="line"><span class="string">		for i := 0; i &lt; len(arr); i++ &#123;</span></span><br><span class="line"><span class="string">			if arr[i] != 0 &#123;</span></span><br><span class="line"><span class="string">				fmt.Printf("下一个数字 %v \n", arr[i])</span></span><br><span class="line"><span class="string">				num = arr[i]</span></span><br><span class="line"><span class="string">				break</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">		if count == 5039 &#123;</span></span><br><span class="line"><span class="string">			for i := 0; i &lt; len(arr); i++ &#123;</span></span><br><span class="line"><span class="string">				if arr[i] != 0 &#123;</span></span><br><span class="line"><span class="string">					fmt.Printf("正确答案: %v", arr[i])</span></span><br><span class="line"><span class="string">					return</span></span><br><span class="line"><span class="string">				&#125;</span></span><br><span class="line"><span class="string">			&#125;</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">​</span></span><br></pre></td></tr></table></figure>
-<p>```</p>
-<p>执行一轮后, 继续给出切片中剩余不为零的第一个元素,将获取的值继续给到程序中进行比对,直到切片中只有一个不为0元素,即为正确数字</p>
-<p>4.此算法最多是8步,平均值因为做的实验较少,未知,还有其他更好的算法,希望大佬指出</p>
-]]></content>
-  </entry>
-  <entry>
     <title>电话号码组合</title>
     <url>/2020/05/15/%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%BB%84%E5%90%88/</url>
     <content><![CDATA[<h1 id="电话号码组合"><a href="#电话号码组合" class="headerlink" title="电话号码组合"></a>电话号码组合</h1><ul>
@@ -1573,25 +1573,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>盛水最多的容器</title>
-    <url>/2020/05/15/%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
-    <content><![CDATA[<h1 id="盛水最多的容器-java-和go语言实现"><a href="#盛水最多的容器-java-和go语言实现" class="headerlink" title="盛水最多的容器 java 和go语言实现"></a>盛水最多的容器 java 和go语言实现</h1><p>​        给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
-<p>说明：你不能倾斜容器，且 n 的值至少为 2。</p>
-<a id="more"></a>
-
-<p>​         此题使用了双指针的解法,就是从两侧同时扫描,时间复杂度从O(n²)降到了O(n)这里就需要多思考,当一个问题需要用到双重循环解决的时候,就要看该问题能否用双指针解决</p>
-<p>​        以下为原始代码(我的),双重循环:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> r = height.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (l&lt;r)&#123;</span><br><span class="line">        maxs = Math.max(maxs,Math.min(height[l],height[r])*(r-l));</span><br><span class="line">        <span class="keyword">if</span> (height[l]&gt;height[r])</span><br><span class="line">            r--;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​        以下为双指针解法,大佬的答案:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxarea = <span class="number">0</span>, l = <span class="number">0</span>, r = height.length - <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">           maxarea = Math.max(maxarea, Math.min(height[l], height[r]) * (r - l));</span><br><span class="line">           <span class="keyword">if</span> (height[l] &lt; height[r])</span><br><span class="line">               l++;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               r--;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> maxarea;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>以下为go语言解法,不过好坑,go的自带工具包是真的少</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxArea</span><span class="params">(height []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    macs := <span class="number">0</span></span><br><span class="line">	l := <span class="number">0</span></span><br><span class="line">	r := <span class="built_in">len</span>(height)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> l &lt; r &#123;</span><br><span class="line">		macs = Max(macs, Min(height[l], height[r])*(r-l))</span><br><span class="line">		<span class="keyword">if</span> height[l] &lt; height[r] &#123;</span><br><span class="line">			l++</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			r--</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> macs</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//自定义的取两个值中较小值的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Min</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> b &lt; a &#123;</span><br><span class="line">		<span class="keyword">return</span> b</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Max max 自定义的取两个值中较大值的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> b &gt; a &#123;</span><br><span class="line">		<span class="keyword">return</span> b</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>约瑟夫环——公式法（递推公式）</title>
     <url>/2020/05/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E2%80%94%E2%80%94%E5%85%AC%E5%BC%8F%E6%B3%95%EF%BC%88%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F%EF%BC%89/</url>
     <content><![CDATA[<h1 id="约瑟夫环——公式法（递推公式）"><a href="#约瑟夫环——公式法（递推公式）" class="headerlink" title="约瑟夫环——公式法（递推公式）"></a>约瑟夫环——公式法（递推公式）</h1><h2 id="约瑟夫问题"><a href="#约瑟夫问题" class="headerlink" title="约瑟夫问题"></a>约瑟夫问题</h2><p>约瑟夫问题是个著名的问题：N个人围成一圈，第一个人从1开始报数，报M的将被杀掉，下一个人接着从1开始报。如此反复，最后剩下一个，求最后的胜利者。<br>例如只有三个人，把他们叫做A、B、C，他们围成一圈，从A开始报数，假设报2的人被杀掉。</p>
@@ -1613,6 +1594,25 @@
 <p>因为求出的结果是数组中的下标，最终的编号还要加1</p>
 <p>下面给出代码实现：</p>
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lastRemaining</span><span class="params">(n <span class="keyword">int</span>, m <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    flag := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= n; i++&#123;</span><br><span class="line">        flag = (flag + m) % i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> flag</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>盛水最多的容器</title>
+    <url>/2020/05/15/%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="盛水最多的容器-java-和go语言实现"><a href="#盛水最多的容器-java-和go语言实现" class="headerlink" title="盛水最多的容器 java 和go语言实现"></a>盛水最多的容器 java 和go语言实现</h1><p>​        给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+<p>说明：你不能倾斜容器，且 n 的值至少为 2。</p>
+<a id="more"></a>
+
+<p>​         此题使用了双指针的解法,就是从两侧同时扫描,时间复杂度从O(n²)降到了O(n)这里就需要多思考,当一个问题需要用到双重循环解决的时候,就要看该问题能否用双指针解决</p>
+<p>​        以下为原始代码(我的),双重循环:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxs = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> r = height.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (l&lt;r)&#123;</span><br><span class="line">        maxs = Math.max(maxs,Math.min(height[l],height[r])*(r-l));</span><br><span class="line">        <span class="keyword">if</span> (height[l]&gt;height[r])</span><br><span class="line">            r--;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        以下为双指针解法,大佬的答案:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxarea = <span class="number">0</span>, l = <span class="number">0</span>, r = height.length - <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">           maxarea = Math.max(maxarea, Math.min(height[l], height[r]) * (r - l));</span><br><span class="line">           <span class="keyword">if</span> (height[l] &lt; height[r])</span><br><span class="line">               l++;</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">               r--;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> maxarea;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以下为go语言解法,不过好坑,go的自带工具包是真的少</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxArea</span><span class="params">(height []<span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    macs := <span class="number">0</span></span><br><span class="line">	l := <span class="number">0</span></span><br><span class="line">	r := <span class="built_in">len</span>(height)<span class="number">-1</span></span><br><span class="line">	<span class="keyword">for</span> l &lt; r &#123;</span><br><span class="line">		macs = Max(macs, Min(height[l], height[r])*(r-l))</span><br><span class="line">		<span class="keyword">if</span> height[l] &lt; height[r] &#123;</span><br><span class="line">			l++</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			r--</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> macs</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//自定义的取两个值中较小值的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Min</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> a &lt; b &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> b &lt; a &#123;</span><br><span class="line">		<span class="keyword">return</span> b</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Max max 自定义的取两个值中较大值的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Max</span><span class="params">(a, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> a &gt; b &#123;</span><br><span class="line">		<span class="keyword">return</span> a</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> b &gt; a &#123;</span><br><span class="line">		<span class="keyword">return</span> b</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
   </entry>
