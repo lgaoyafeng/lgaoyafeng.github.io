@@ -1,107 +1,28 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="位运算解决八皇后的问题"><meta name="keywords" content=""><meta name="author" content="丰之霸"><meta name="copyright" content="丰之霸"><title>位运算解决八皇后的问题 | Hexo</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#位运算回溯法解决八皇后-N皇后-问题"><span class="toc-number">1.</span> <span class="toc-text">位运算回溯法解决八皇后(N皇后)问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-以下为背景"><span class="toc-number">1.1.</span> <span class="toc-text">1. 以下为背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-传统的穷举法解决"><span class="toc-number">1.2.</span> <span class="toc-text">2. 传统的穷举法解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-位运算解决"><span class="toc-number">1.3.</span> <span class="toc-text">3. 位运算解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-go语言实现方法"><span class="toc-number">1.4.</span> <span class="toc-text">4. go语言实现方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-总结"><span class="toc-number">1.5.</span> <span class="toc-text">5. 总结</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">丰之霸</div><div class="author-info__description text-center">千里之行,始于足下</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hexo</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">位运算解决八皇后的问题</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-15</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="位运算回溯法解决八皇后-N皇后-问题"><a href="#位运算回溯法解决八皇后-N皇后-问题" class="headerlink" title="位运算回溯法解决八皇后(N皇后)问题"></a>位运算回溯法解决八皇后(N皇后)问题</h1><h2 id="1-以下为背景"><a href="#1-以下为背景" class="headerlink" title="1. 以下为背景"></a>1. 以下为背景</h2><p>​        八皇后问题，一个古老而著名的问题，是<a href="https://baike.baidu.com/item/回溯算法/9258495" target="_blank" rel="noopener">回溯算法</a>的典型案例。该问题由国际西洋棋棋手马克斯·贝瑟尔于 1848 年提出：在 8×8 格的<a href="https://baike.baidu.com/item/国际象棋/80888" target="_blank" rel="noopener">国际象棋</a>上摆放八个<a href="https://baike.baidu.com/item/皇后/15860305" target="_blank" rel="noopener">皇后</a>，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。<a href="https://baike.baidu.com/item/高斯/24098" target="_blank" rel="noopener">高斯</a>认为有 76 种方案。1854 年在柏林的象棋杂志上不同的作者发表了 40 种不同的解，后来有人用<a href="https://baike.baidu.com/item/图论/1433806" target="_blank" rel="noopener">图论</a>的方法解出 92 种结果。<a href="https://baike.baidu.com/item/计算机/140338" target="_blank" rel="noopener">计算机</a>发明后，有多种计算机语言可以编程解决此问题。</p>
+<h2 id="2-传统的穷举法解决"><a href="#2-传统的穷举法解决" class="headerlink" title="2. 传统的穷举法解决"></a>2. 传统的穷举法解决</h2><p>​        八皇后问题如果用<a href="https://baike.baidu.com/item/穷举法/1431412" target="_blank" rel="noopener">穷举法</a>需要尝试 88 =16,777,216 种情况。每一列放一个<a href="https://baike.baidu.com/pic/八皇后问题/11053477/26857349/86d6277f9e2f070828387b62726caf99a9014c085432?fr=lemma&ct=cover" target="_blank" rel="noopener"><img src="https://bkimg.cdn.bcebos.com/pic/86d6277f9e2f070828387b62726caf99a9014c085432?x-bce-process=image/resize,m_lfit,w_220,h_220,limit_1" alt="八皇后问题">)八皇后问题(3张)</a> 皇后，可以放在第 1 行，第 2 行，……，直到第 8 行。穷举的时候从所有皇后都放在第 1 行的方案开始，检验皇后之间是否会相互攻击。如果会，把列 H 的皇后挪一格，验证下一个方案。移到底了就 “进位” 到列 G 的皇后挪一格，列 H 的皇后重新试过全部的 8 行。如图 1 所示，这种方法无疑是非常低效率的，因为它并不是哪里有冲突就调整哪里，而是盲目地按既定顺序枚举所有的可能方案。</p>
+<p>​        此方法明显效率很低, 即使是现在计算机效率很高的情况下</p>
+<h2 id="3-位运算解决"><a href="#3-位运算解决" class="headerlink" title="3. 位运算解决"></a>3. 位运算解决</h2><p>​        此方法是运用了二进制的特性,用一个n位的二进制来代表,可以在一行上进行查找,00000000为初始,当为11111111的时候查找结束,下一层摆放位置根据上一层的摆放位置来产生,每次都从最右侧找一个可以摆放的位置,摆放后将该位置从可摆放的位置中剔除,然后剔除该位置的左右对角线位置, 递归调用本方法进行下一层位置的摆放,</p>
+<p>假如摆放完的位置不是11111111,而可摆放的位置又没有了,就会进行回溯,从新摆放上一层的位置, 当所有的位置都摆放完之后,sum(统计摆放完成的次数)+1,当完成所有的摆法之后,程序结束,</p>
+<p>​        java代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaHuangHou</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> sum = <span class="number">0</span>, upperlimit = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> row 纵列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> ld 左斜线</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> rd 右斜线</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">compute</span><span class="params">(<span class="keyword">int</span> row, <span class="keyword">int</span> ld, <span class="keyword">int</span> rd)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//当row=11111111的时候，就是全部找完了。</span></span><br><span class="line">        <span class="keyword">if</span> (row != upperlimit) &#123;</span><br><span class="line">            <span class="comment">//找到该列的所以可以放的位置</span></span><br><span class="line">            <span class="keyword">int</span> pos = upperlimit &amp; ~(row | ld | rd);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (pos != <span class="number">0</span>)<span class="comment">//没有可摆放的位置,回溯</span></span><br><span class="line"></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//取出第一个可以放的位置，也就是最右边的1</span></span><br><span class="line">                <span class="keyword">int</span> p = pos &amp; -pos;</span><br><span class="line">                <span class="comment">//去除刚取出来的位置</span></span><br><span class="line">                pos -= p;</span><br><span class="line">                <span class="comment">//继续寻找,个个参数平移一位</span></span><br><span class="line">                compute(row + p, (ld + p) &lt;&lt; <span class="number">1</span>, (rd + p) &gt;&gt; <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>  sum++;<span class="comment">//种数自加</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Calendar start;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//输入皇后数字</span></span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">14</span>;</span><br><span class="line">        <span class="comment">//设置开始时间</span></span><br><span class="line">        start = Calendar.getInstance();</span><br><span class="line">        <span class="comment">//保证数字在1到32之间，避免系统溢出</span></span><br><span class="line">        <span class="keyword">if</span> ((n &lt; <span class="number">1</span>) || (n &gt; <span class="number">32</span>)) &#123;</span><br><span class="line">            System.out.println(<span class="string">" 只能计算1-32之间\n"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(n + <span class="string">" 皇后\n"</span>);</span><br><span class="line">        <span class="comment">//结束标志 uperlimti=255 转换为二进制就是11111111</span></span><br><span class="line">        upperlimit = (upperlimit &lt;&lt; n) - <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//从0，0，0开始</span></span><br><span class="line">        compute(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"共有"</span></span><br><span class="line">                + sum</span><br><span class="line">                + <span class="string">"种排列, 计算时间"</span></span><br><span class="line">                + (Calendar.getInstance().getTimeInMillis() - start</span><br><span class="line">                .getTimeInMillis()) / <span class="number">1000</span> + <span class="string">"秒 \n"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="number">15</span> 皇后</span><br><span class="line"></span><br><span class="line">共有<span class="number">2279184</span>种排列, 计算时间<span class="number">2610</span>毫秒</span><br></pre></td></tr></table></figure>
 
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            if (theme.post_meta.date_type === 'both')
-              time.post-meta__date
-                i.fa.fa-calendar(aria-hidden="true")
-                =' '+_p('post.created')+' '+date(page.date, config.date_format)
-                span.post-meta__separator |
-                i.fa.fa-calendar-check-o(aria-hidden="true")
-                =' '+_p('post.updated')+' '+date(page.updated, config.date_format)
-            else
-              - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-              time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
 
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(page.permalink)) #[=page.permalink]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+
+<h2 id="4-go语言实现方法"><a href="#4-go语言实现方法" class="headerlink" title="4. go语言实现方法"></a>4. go语言实现方法</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//   八皇后问题</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sum <span class="keyword">int</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> upperlimit <span class="keyword">int</span> = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(row <span class="keyword">int</span>, ld <span class="keyword">int</span>, rd <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> row != upperlimit &#123;</span><br><span class="line">		pos := upperlimit &amp;^ (row | ld | rd)</span><br><span class="line">		<span class="keyword">for</span> pos != <span class="number">0</span> &#123; <span class="comment">//当没有可放置的位置,回溯</span></span><br><span class="line">			<span class="comment">//取出第一个可以放的位置,也就是最右边的1</span></span><br><span class="line">			p := pos &amp; - pos</span><br><span class="line">			pos -= p <span class="comment">//将取出的改位置删除</span></span><br><span class="line">			test(row+p, (ld+p)&lt;&lt;<span class="number">1</span>, (rd+p)&gt;&gt;<span class="number">1</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		sum++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	start := time.Now()</span><br><span class="line">	<span class="comment">//指定皇后的数字以及棋盘的尺寸</span></span><br><span class="line">	n := <span class="number">8</span></span><br><span class="line">	<span class="keyword">if</span> n &lt; <span class="number">1</span> || n &gt; <span class="number">32</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"请输入1到32中间的数"</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	upperlimit = upperlimit&lt;&lt;n - <span class="number">1</span></span><br><span class="line">	test(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	fmt.Printf(<span class="string">"%v皇后,共有 %v 摆放方法 耗时 %v 毫秒"</span>,n,sum,time.Since(start)/<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">15</span>皇后,共有 <span class="number">2279184</span> 摆放方法 耗时 <span class="number">1.922809</span>ms 毫秒</span><br><span class="line">Process finished with exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>总结,go和java的运行效率差距还是明显的</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">丰之霸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/05/15/%E4%BD%8D%E8%BF%90%E7%AE%97%E8%A7%A3%E5%86%B3%E5%85%AB%E7%9A%87%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98/">http://yoursite.com/2020/05/15/%E4%BD%8D%E8%BF%90%E7%AE%97%E8%A7%A3%E5%86%B3%E5%85%AB%E7%9A%87%E5%90%8E%E7%9A%84%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/05/15/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><i class="fa fa-chevron-left">  </i><span>动态规划</span></a></div><div class="next-post pull-right"><a href="/2020/05/15/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/"><span>云服务器的使用</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By 丰之霸</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

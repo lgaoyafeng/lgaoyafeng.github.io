@@ -1,107 +1,140 @@
-extends includes/layout.pug
-
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            if (theme.post_meta.date_type === 'both')
-              time.post-meta__date
-                i.fa.fa-calendar(aria-hidden="true")
-                =' '+_p('post.created')+' '+date(page.date, config.date_format)
-                span.post-meta__separator |
-                i.fa.fa-calendar-check-o(aria-hidden="true")
-                =' '+_p('post.updated')+' '+date(page.updated, config.date_format)
-            else
-              - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-              time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
-
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(page.permalink)) #[=page.permalink]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="idea快捷键"><meta name="keywords" content=""><meta name="author" content="丰之霸"><meta name="copyright" content="丰之霸"><title>idea快捷键 | Hexo</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">丰之霸</div><div class="author-info__description text-center">千里之行,始于足下</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hexo</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">idea快捷键</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-15</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p><strong>自动代码</strong></p>
+<p>常用的有fori/sout/psvm+Tab即可生成循环、System.out、main方法等boilerplate样板代码 。</p>
+<p><em>例如要输入for(User user : users)只需输入user.for+Tab ；</em></p>
+<p><em>再比如，要输入Date birthday = user.getBirthday()只需输入user.getBirthday().var+Tab即可。</em></p>
+<p>代码标签输入完成后，按Tab，生成代码。</p>
+<ol>
+<li>Ctrl+Alt+O 优化导入的类和包 </li>
+<li>Alt+Insert 生成代码(如get,set方法,构造函数等)  或者右键（Generate） </li>
+<li>fori/sout/psvm + Tab </li>
+<li>Ctrl+Alt+T 生成try catch 或者 Alt+enter </li>
+<li>CTRL+ALT+T 把选中的代码放在 TRY{} IF{} ELSE{} 里 </li>
+<li>Ctrl + O 重写方法 </li>
+<li>Ctrl + I 实现方法 </li>
+<li>Ctr+shift+U 大小写转化 </li>
+<li>ALT+回车  导入包,自动修正 </li>
+<li>ALT+/    代码提示 </li>
+<li>CTRL+J   自动代码 </li>
+<li>Ctrl+Shift+J，整合两行为一行 </li>
+<li>CTRL+空格  代码提示 </li>
+<li>CTRL+SHIFT+SPACE 自动补全代码 </li>
+<li>CTRL+ALT+L 格式化代码 </li>
+<li>CTRL+ALT+I 自动缩进 </li>
+<li>CTRL+ALT+O 优化导入的类和包 </li>
+<li>ALT+INSERT 生成代码(如GET,SET方法,构造函数等) </li>
+<li>CTRL+E   最近更改的代码 </li>
+<li>CTRL+ALT+SPACE 类名或接口名提示 </li>
+<li>CTRL+P  方法参数提示 </li>
+<li>CTRL+Q，可以看到当前方法的声明 </li>
+<li>Shift+F6 重构-重命名 (包、类、方法、变量、甚至注释等) </li>
+<li>Ctrl+Alt+V 提取变量 </li>
+</ol>
+<p><strong>查询快捷键</strong></p>
+<ol>
+<li>Ctrl＋Shift＋Backspace可以跳转到上次编辑的地 </li>
+<li>CTRL+ALT+ left/right 前后导航编辑过的地方 </li>
+<li>ALT+7 靠左窗口显示当前文件的结构 </li>
+<li>Ctrl+F12 浮动显示当前文件的结构 </li>
+<li>ALT+F7 找到你的函数或者变量或者类的所有引用到的地方 </li>
+<li>CTRL+ALT+F7 找到你的函数或者变量或者类的所有引用到的地方 </li>
+<li>Ctrl+Shift+Alt+N 查找类中的方法或变量 </li>
+<li>双击SHIFT 在项目的所有目录查找文件 </li>
+<li>Ctrl+N  查找类 </li>
+<li>Ctrl+Shift+N 查找文件 </li>
+<li>CTRL+G  定位行 </li>
+<li>CTRL+F  在当前窗口查找文本 </li>
+<li>CTRL+SHIFT+F 在指定窗口查找文本 </li>
+<li>CTRL+R  在 当前窗口替换文本 </li>
+<li>CTRL+SHIFT+R 在指定窗口替换文本 </li>
+<li>ALT+SHIFT+C 查找修改的文件 </li>
+<li>CTRL+E  最近打开的文件 </li>
+<li>F3  向下查找关键字出现位置 </li>
+<li>SHIFT+F3 向上一个关键字出现位置 </li>
+<li>选中文本，按Alt+F3 ，高亮相同文本，F3逐个往下查找相同文本 </li>
+<li>F4  查找变量来源 </li>
+<li>CTRL+SHIFT+O 弹出显示查找内容 </li>
+<li>Ctrl+W 选中代码，连续按会有其他效果 </li>
+<li>F2 或Shift+F2 高亮错误或警告快速定位 </li>
+<li>Ctrl+Up/Down 光标跳转到第一行或最后一行下 </li>
+<li>Ctrl+B 快速打开光标处的类或方法 </li>
+<li>CTRL+ALT+B 找所有的子类 </li>
+<li>CTRL+SHIFT+B 找变量的类 </li>
+<li>Ctrl+Shift+上下键 上下移动代码 </li>
+<li>Ctrl+Alt+ left/right 返回至上次浏览的位置 </li>
+<li>Ctrl+X 删除行 </li>
+<li>Ctrl+D 复制行 </li>
+<li>Ctrl+/ 或 Ctrl+Shift+/ 注释（// 或者/<em>…</em>/ ） </li>
+<li>Ctrl+H 显示类结构图 </li>
+<li>Ctrl+Q 显示注释文档 </li>
+<li>Alt+F1 查找代码所在位置 </li>
+<li>Alt+1 快速打开或隐藏工程面板 </li>
+<li>Alt+ left/right 切换代码视图 </li>
+<li>ALT+ ↑/↓ 在方法间快速移动定位 </li>
+<li>CTRL+ALT+ left/right 前后导航编辑过的地方 </li>
+<li>Ctrl＋Shift＋Backspace可以跳转到上次编辑的地 </li>
+<li>Alt+6  查找TODO </li>
+</ol>
+<p><strong>其他快捷键</strong></p>
+<ol>
+<li>SHIFT+ENTER 另起一行 </li>
+<li>CTRL+Z  倒退(撤销) </li>
+<li>CTRL+SHIFT+Z 向前(取消撤销) </li>
+<li>CTRL+ALT+F12 资源管理器打开文件夹 </li>
+<li>ALT+F1  查找文件所在目录位置 </li>
+<li>SHIFT+ALT+INSERT 竖编辑模式 </li>
+<li>CTRL+F4 关闭当前窗口 </li>
+<li>Ctrl+Alt+V，可以引入变量。例如：new String(); 自动导入变量定义 </li>
+<li>Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单） </li>
+</ol>
+<p><strong>svn快捷键</strong></p>
+<ol>
+<li>ctrl+k 提交代码到SVN </li>
+<li>ctrl+t 更新代码 </li>
+</ol>
+<p><strong>调试快捷键</strong></p>
+<p>其实常用的 就是F8 F7 F9 最值得一提的就是Drop Frame 可以让运行过的代码从头再来。</p>
+<ol>
+<li>alt+F8  debug时选中查看值 </li>
+<li>Alt+Shift+F9，选择 Debug </li>
+<li>Alt+Shift+F10，选择 Run </li>
+<li>Ctrl+Shift+F9，编译 </li>
+<li>Ctrl+Shift+F8，查看断点 </li>
+<li>F7，步入 </li>
+<li>Shift+F7，智能步入 </li>
+<li>Alt+Shift+F7，强制步入 </li>
+<li>F8，步过 </li>
+<li>Shift+F8，步出 </li>
+<li>Alt+Shift+F8，强制步过 </li>
+<li>Alt+F9，运行至光标处 </li>
+<li>Ctrl+Alt+F9，强制运行至光标处 </li>
+<li>F9，恢复程序 </li>
+<li>Alt+F10，定位到断点 </li>
+</ol>
+<p><strong>重构</strong></p>
+<ol>
+<li>Ctrl+Alt+Shift+T，弹出重构菜单 </li>
+<li>Shift+F6，重命名 </li>
+<li>F6，移动 </li>
+<li>F5，复制 </li>
+<li>Alt+Delete，安全删除 </li>
+<li>Ctrl+Alt+N，内联 </li>
+</ol>
+<p><strong>十大Intellij IDEA快捷键</strong> </p>
+<p>Intellij IDEA中有很多快捷键让人爱不释手，stackoverflow上也有一些有趣的讨论。每个人都有自己的最爱，想排出个理想的榜单还真是困难。 </p>
+<p>以前也整理过Intellij的快捷键，这次就按照我日常开发时的使用频率，简单分类列一下我最喜欢的十大快捷-神-键吧。 </p>
+<p><strong>1 智能提示:</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.2.1\bin\jetbrains-agent.jar</span><br></pre></td></tr></table></figure></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">丰之霸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/05/15/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/">http://yoursite.com/2020/05/15/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/05/15/MybatisPlus/"><i class="fa fa-chevron-left">  </i><span>MybatisPlus</span></a></div><div class="next-post pull-right"><a href="/2020/05/15/Docker%E6%95%B0%E6%8D%AE%E5%8D%B7%E6%8C%82%E8%BD%BD%E5%AE%BF%E4%B8%BB%E6%9C%BA/"><span>Docker数据卷挂载宿主机</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By 丰之霸</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>

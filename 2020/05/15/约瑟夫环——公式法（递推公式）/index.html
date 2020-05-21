@@ -1,107 +1,33 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="约瑟夫环——公式法（递推公式）"><meta name="keywords" content=""><meta name="author" content="丰之霸"><meta name="copyright" content="丰之霸"><title>约瑟夫环——公式法（递推公式） | Hexo</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#约瑟夫环——公式法（递推公式）"><span class="toc-number">1.</span> <span class="toc-text">约瑟夫环——公式法（递推公式）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#约瑟夫问题"><span class="toc-number">1.1.</span> <span class="toc-text">约瑟夫问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.2.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#普通解法"><span class="toc-number">1.2.1.</span> <span class="toc-text">普通解法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#公式法"><span class="toc-number">1.2.2.</span> <span class="toc-text">公式法</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">丰之霸</div><div class="author-info__description text-center">千里之行,始于足下</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">28</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Hexo</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">约瑟夫环——公式法（递推公式）</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-15</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="约瑟夫环——公式法（递推公式）"><a href="#约瑟夫环——公式法（递推公式）" class="headerlink" title="约瑟夫环——公式法（递推公式）"></a>约瑟夫环——公式法（递推公式）</h1><h2 id="约瑟夫问题"><a href="#约瑟夫问题" class="headerlink" title="约瑟夫问题"></a>约瑟夫问题</h2><p>约瑟夫问题是个著名的问题：N个人围成一圈，第一个人从1开始报数，报M的将被杀掉，下一个人接着从1开始报。如此反复，最后剩下一个，求最后的胜利者。<br>例如只有三个人，把他们叫做A、B、C，他们围成一圈，从A开始报数，假设报2的人被杀掉。</p>
+<p>首先A开始报数，他报1。侥幸逃过一劫。<br>然后轮到B报数，他报2。非常惨，他被杀了<br>C接着从1开始报数<br>接着轮到A报数，他报2。也被杀死了。<br>最终胜利者是C</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="普通解法"><a href="#普通解法" class="headerlink" title="普通解法"></a>普通解法</h3><p>刚学数据结构的时候，我们可能用链表的方法去模拟这个过程，N个人看作是N个链表节点，节点1指向节点2，节点2指向节点3，……，节点N-1指向节点N，节点N指向节点1，这样就形成了一个环。然后从节点1开始1、2、3……往下报数，每报到M，就把那个节点从环上删除。下一个节点接着从1开始报数。最终链表仅剩一个节点。它就是最终的胜利者。</p>
+<p>缺点：<br>要模拟整个游戏过程，时间复杂度高达O(nm)，当n，m非常大(例如上百万，上千万)的时候，几乎是没有办法在短时间内出结果的。</p>
+<h3 id="公式法"><a href="#公式法" class="headerlink" title="公式法"></a>公式法</h3><p>约瑟夫环是一个经典的数学问题，我们不难发现这样的依次报数，似乎有规律可循。为了方便导出递推式，我们重新定义一下题目。<br>问题： N个人编号为1，2，……，N，依次报数，每报到M时，杀掉那个人，求最后胜利者的编号。</p>
+<p>这边我们先把结论抛出了。之后带领大家一步一步的理解这个公式是什么来的。<br>递推公式：<br>f(N,M)=(f(N−1,M)+M)%Nf(N,M)=(f(N-1,M)+M)%N<br>f(N,M)=(f(N−1,M)+M)%N</p>
+<p>f(N,M)f(N,M)f(N,M)表示，N个人报数，每报到M时杀掉那个人，最终胜利者的编号<br>f(N−1,M)f(N-1,M)f(N−1,M)表示，N-1个人报数，每报到M时杀掉那个人，最终胜利者的编号<br>下面我们不用字母表示每一个人，而用数字。<br>1、2、3、4、5、6、7、8、9、10、111、 2 、 3、 4、5 、6、 7 、 8、 9、 10、 11<br>1、2、3、4、5、6、7、8、9、10、11</p>
+<p>表示11个人，他们先排成一排，假设每报到3的人被杀掉。</p>
+<p>刚开始时，头一个人编号是1，从他开始报数，第一轮被杀掉的是编号3的人。<br>编号4的人从1开始重新报数，这时候我们可以认为编号4这个人是队伍的头。第二轮被杀掉的是编号6的人。<br>编号7的人开始重新报数，这时候我们可以认为编号7这个人是队伍的头。第三轮被杀掉的是编号9的人。<br>……<br>第九轮时，编号2的人开始重新报数，这时候我们可以认为编号2这个人是队伍的头。这轮被杀掉的是编号8的人。<br>下一个人还是编号为2的人，他从1开始报数，不幸的是他在这轮被杀掉了。<br>最后的胜利者是编号为7的人。<br>下图表示这一过程（先忽视绿色的一行）</p>
+<p>现在再来看我们递推公式是怎么得到的！<br>将上面表格的每一行看成数组，这个公式描述的是：幸存者在这一轮的下标位置</p>
+<p>f(1,3)f(1,3)f(1,3)：只有1个人了，那个人就是获胜者，他的下标位置是0<br>f(2,3)=(f(1,3)+3)%2=3%2=1f(2,3)=(f(1,3)+3)%2=3%2=1f(2,3)=(f(1,3)+3)%2=3%2=1：在有2个人的时候，胜利者的下标位置为1<br>f(3,3)=(f(2,3)+3)%3=4%3=1f(3,3)=(f(2,3)+3)%3=4%3=1f(3,3)=(f(2,3)+3)%3=4%3=1：在有3个人的时候，胜利者的下标位置为1<br>f(4,3)=(f(3,3)+3)%4=4%4=0f(4,3)=(f(3,3)+3)%4=4%4=0f(4,3)=(f(3,3)+3)%4=4%4=0：在有4个人的时候，胜利者的下标位置为0<br>……<br>f(11,3)=6f(11,3)=6f(11,3)=6<br>很神奇吧！现在你还怀疑这个公式的正确性吗？上面这个例子验证了这个递推公式的确可以计算出胜利者的下标，下面将讲解怎么推导这个公式。<br><strong>问题1：</strong>假设我们已经知道11个人时，胜利者的下标位置为6。那下一轮10个人时，胜利者的下标位置为多少？<br><strong>答：</strong>其实吧，第一轮删掉编号为3的人后，之后的人都往前面移动了3位，胜利这也往前移动了3位，所以他的下标位置由6变成3。</p>
+<p><strong>问题2：</strong>假设我们已经知道10个人时，胜利者的下标位置为3。那下一轮11个人时，胜利者的下标位置为多少？<br><strong>答：</strong>这可以看错是上一个问题的逆过程，大家都往后移动3位，所以f(11,3)=f(10,3)+3f(11,3)=f(10,3)+3f(11,3)=f(10,3)+3。不过有可能数组会越界，所以最后模上当前人数的个数，f(11,3)=（f(10,3)+3）%11f(11,3)=（f(10,3)+3）%11f(11,3)=（f(10,3)+3）%11</p>
+<p><strong>问题3：</strong>现在改为人数改为N，报到M时，把那个人杀掉，那么数组是怎么移动的？<br><strong>答：</strong>每杀掉一个人，下一个人成为头，相当于把数组向前移动M位。若已知N-1个人时，胜利者的下标位置位f(N−1,M)f(N-1,M)f(N−1,M)，则N个人的时候，就是往后移动M为，(因为有可能数组越界，超过的部分会被接到头上，所以还要模N)，既f(N,M)=(f(N−1,M)+M)%nf(N,M)=(f(N-1,M)+M)%nf(N,M)=(f(N−1,M)+M)%n</p>
+<p><strong>注：</strong>理解这个递推式的核心在于关注胜利者的下标位置是怎么变的。每杀掉一个人，其实就是把这个数组向前移动了M位。然后逆过来，就可以得到这个递推式。</p>
+<p>因为求出的结果是数组中的下标，最终的编号还要加1</p>
+<p>下面给出代码实现：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lastRemaining</span><span class="params">(n <span class="keyword">int</span>, m <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    flag := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= n; i++&#123;</span><br><span class="line">        flag = (flag + m) % i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> flag</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-block top_img
-  - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img
-  if (top_img && page.top_img !== false)
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var flag = top_img === true ? 'no-bg' : ''
-    div#top-container(style=bg_img class=flag)
-      include ./includes/header.pug
-      #post-info
-        #post-title= page.title || _p('no_title')
-        #post-meta
-          if (theme.post_meta.date_type)
-            if (theme.post_meta.date_type === 'both')
-              time.post-meta__date
-                i.fa.fa-calendar(aria-hidden="true")
-                =' '+_p('post.created')+' '+date(page.date, config.date_format)
-                span.post-meta__separator |
-                i.fa.fa-calendar-check-o(aria-hidden="true")
-                =' '+_p('post.updated')+' '+date(page.updated, config.date_format)
-            else
-              - var date_type = theme.post_meta.date_type === 'updated' ? 'updated' : 'date'
-              time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-          if (theme.post_meta.categories && page.categories.data.length > 0)
-            if (theme.post_meta.date_type)
-              span.post-meta__separator |
-            each item, index in page.categories.data
-              i.fa.fa-inbox.post-meta__icon(aria-hidden="true")
-              a(href=url_for(item.path)).post-meta__categories #[=item.name]
-              if (index < page.categories.data.length - 1)
-                 i.fa.fa-angle-right(aria-hidden="true")
-          if (theme.disqus.enable && theme.disqus.count)
-            if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-              span.post-meta__separator |
-            i.fa.fa-comment-o.post-meta__icon(aria-hidden="true")
-            a(href=url_for(page.path) + '#disqus_thread')
-              span.disqus-comment-count(data-disqus-identifier=page.path)
-          if (theme.wordcount && theme.wordcount.enable)
-            .post-meta-wordcount
-              span= _p('post.wordcount') + ': '
-              span.word-count= wordcount(page.content)
-              span.post-meta__separator |
-              span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-  else
-    div#top-container.plain
-      include ./includes/header.pug
-
-block content
-  article#post(class="")
-    if (!top_img)
-      #post-title.plain= page.title || _p('no_title')
-      #post-meta
-        if (theme.post_meta.date_type)
-          - var date_type = theme.post_meta.date_type === 'updated' ? '' : 'date'
-          time.post-meta__date #[i.fa.fa-calendar(aria-hidden="true")] #[=date(page[date_type], config.date_format)]
-        if (theme.post_meta.categories && page.categories.data.length > 0)
-          if (theme.post_meta.date_type)
-            span.post-meta__separator |
-          each item, index in page.categories.data
-            i.fa.fa-inbox(aria-hidden="true")
-            a(href=url_for(item.path)).post-meta__categories  #[=item.name]
-            if (index < page.categories.data.length - 1)
-                i.fa.fa-angle-right.post-meta__separator(aria-hidden="true")
-        if (theme.disqus.enable && theme.disqus.count)
-          if (theme.post_meta.date_type || theme.post_meta.categories && page.categories.data.length > 0)
-            span.post-meta__separator |
-          i.fa.fa-comment-o(aria-hidden="true")
-          a(href=url_for(page.path) + '#disqus_thread')
-            span.disqus-comment-count(data-disqus-identifier=page.path)
-        if (theme.wordcount && theme.wordcount.enable)
-          span.post-meta__separator |
-          span.post-meta-wordcount
-            span= _p('post.wordcount') + ': '
-            span.word-count= wordcount(page.content)
-            span.post-meta__separator |
-            span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
-  if (theme.post_copyright && theme.post_copyright.enable)
-    .post-copyright
-      .post-copyright__author
-        span.post-copyright-meta= _p('post.copyright.author') + ": "
-        span.post-copyright-info
-          a(href=`mailto:${config.email}`) #[=config.author]
-      .post-copyright__type
-        span.post-copyright-meta= _p('post.copyright.link') + ": "
-        span.post-copyright-info
-          a(href=url_for(page.permalink)) #[=page.permalink]
-      .post-copyright__notice
-        span.post-copyright-meta= _p('post.copyright.copyright_notice') + ": "
-        span.post-copyright-info!= _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
-  if (theme.post_meta.tags)
-    .post-meta__tag-list
-      each item, index in page.tags.data
-        a(href=url_for(item.path)).post-meta__tags #[=item.name]
-  if (theme.QR_code)
-    if (theme.QR_code.length > 0)
-      .post-qr-code
-        each item in theme.QR_code
-          .post-qr-code-item
-            img.post-qr-code__img(src=(item.itemlist||item).img)
-            .post-qr-code__desc=(item.itemlist||item).text
-  include includes/share/index.pug
-  include includes/pagination.pug
-  if (theme.adv && theme.adv.enable)
-    .post-adv!= theme.adv.info
-  if page.comments !== false
-    include includes/comments/index.pug
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">丰之霸</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://yoursite.com/2020/05/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E2%80%94%E2%80%94%E5%85%AC%E5%BC%8F%E6%B3%95%EF%BC%88%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F%EF%BC%89/">http://yoursite.com/2020/05/15/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E2%80%94%E2%80%94%E5%85%AC%E5%BC%8F%E6%B3%95%EF%BC%88%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/05/15/%E9%9D%9E%E5%B8%B8%E6%9C%89%E4%BB%B7%E5%80%BC%E7%9A%84AI/"><i class="fa fa-chevron-left">  </i><span>非常有价值的AI</span></a></div><div class="next-post pull-right"><a href="/2020/05/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"><span>贪心算法</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2020 By 丰之霸</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
